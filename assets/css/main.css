@@ -242,11 +242,15 @@ kbd {
 
 @media (max-width: 640px) {
   .header-search-btn {
-    width: auto;
-    padding: 8px;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    justify-content: center;
+    flex-shrink: 0;
   }
-  .header-search-btn span:not(kbd) {
-    display: none;
+  .header-search-btn span,
+  .header-search-btn kbd {
+    display: none !important;
   }
 }
 
