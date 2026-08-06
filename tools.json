@@ -1,0 +1,402 @@
+[
+  {
+    "id": "age-calculator",
+    "name": "Age Calculator",
+    "tagline": "Calculate your exact age in years, months, days, hours, and minutes.",
+    "description": "Fast and precise age calculator. Computes exact age down to minutes, total days lived, and countdown to your next birthday.",
+    "category": "calculators",
+    "categoryName": "Calculators",
+    "url": "/tools/age-calculator.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='4' rx='2' ry='2'/><line x1='16' x2='16' y1='2' y2='6'/><line x1='8' x2='8' y1='2' y2='6'/><line x1='3' x2='21' y1='10' y2='10'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "age",
+      "calculator",
+      "birthday",
+      "date",
+      "time",
+      "date of birth"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "uuid-generator",
+    "name": "UUID Generator",
+    "tagline": "Generate cryptographically secure Version 4 UUIDs instantly.",
+    "description": "Free bulk UUID / GUID generator. Create v4 unique identifiers with uppercase, lowercase, or hyphen toggles.",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "url": "/tools/uuid-generator.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z'/><path d='M7 7h.01'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "uuid",
+      "guid",
+      "generator",
+      "developer",
+      "id",
+      "random"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "youtube-thumbnail-downloader",
+    "name": "YouTube Thumbnail Downloader",
+    "tagline": "Download YouTube video thumbnails in 4K, HD, and SD quality.",
+    "description": "Extract and download high-definition (1080p, 720p, 480p) thumbnail images directly from any YouTube video link.",
+    "category": "social-media",
+    "categoryName": "Social Media",
+    "url": "/tools/youtube-thumbnail-downloader.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z'/><polygon points='10 15 15 12 10 9 10 15'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "youtube",
+      "thumbnail",
+      "downloader",
+      "image",
+      "media",
+      "video"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "qr-code-generator",
+    "name": "QR Code Generator",
+    "tagline": "Create custom QR codes for URLs, text, Wi-Fi, and contacts.",
+    "description": "Generate high-resolution vector and PNG QR codes with customizable colors, error correction, and instant download.",
+    "category": "social-media",
+    "categoryName": "Social Media",
+    "url": "/tools/qr-code-generator.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='5' height='5' x='3' y='3' rx='1'/><rect width='5' height='5' x='16' y='3' rx='1'/><rect width='5' height='5' x='3' y='16' rx='1'/><path d='M21 16h-3a2 2 0 0 0-2 2v3'/><path d='M21 21v.01'/><path d='M12 7v3a2 2 0 0 1-2 2H7'/><path d='M3 12h.01'/><path d='M12 3h.01'/><path d='M12 16v.01'/><path d='M16 12h1'/><path d='M21 12v.01'/><path d='M12 21v-1'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "qr code",
+      "generator",
+      "barcode",
+      "url",
+      "wifi",
+      "link"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "password-generator",
+    "name": "Password Generator",
+    "tagline": "Generate strong, secure, random passwords with custom rules.",
+    "description": "Create unhackable passwords using browser-native CSPRNG. Includes real-time strength feedback and entropy score.",
+    "category": "calculators",
+    "categoryName": "Calculators",
+    "url": "/tools/password-generator.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='11' x='3' y='11' rx='2' ry='2'/><path d='M7 11V7a5 5 0 0 1 10 0v4'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "password",
+      "generator",
+      "security",
+      "random",
+      "hash",
+      "secret"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "json-viewer",
+    "name": "JSON Viewer",
+    "tagline": "Inspect, expand, and collapse complex JSON objects visually.",
+    "description": "Interactive visual JSON tree viewer with color-coded syntax highlighting, depth collapse, and node filtering.",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "url": "/tools/json-viewer.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><polyline points='14 2 14 8 20 8'/><path d='M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1'/><path d='M14 12a1 1 0 0 1 1 1v1a1 1 0 0 0 1 1 1 1 0 0 0-1 1v1a1 1 0 0 1-1 1'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "json",
+      "viewer",
+      "tree",
+      "inspector",
+      "developer",
+      "parser"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "json-formatter",
+    "name": "JSON Formatter",
+    "tagline": "Beautify, format, and validate raw JSON code instantly.",
+    "description": "Format messy JSON string into clean indented JSON with syntax error detection, minification, and copy options.",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "url": "/tools/json-formatter.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M16 3h5v5'/><path d='M8 3H3v5'/><path d='M12 22v-8'/><path d='M4 12H2'/><path d='M10 12H8'/><path d='M16 12h-2'/><path d='M22 12h-2'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "json",
+      "formatter",
+      "beautify",
+      "validate",
+      "prettify",
+      "minifier"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "base64-encoder",
+    "name": "Base64 Encoder",
+    "tagline": "Encode plain text or binary data into Base64 format.",
+    "description": "Convert plain UTF-8 text strings to Base64 standard or URL-safe encoded output instantly.",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "url": "/tools/base64-encoder.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='16 18 22 12 16 6'/><polyline points='8 6 2 12 8 18'/></svg>",
+    "popular": false,
+    "recentlyAdded": true,
+    "tags": [
+      "base64",
+      "encoder",
+      "encode",
+      "developer",
+      "binary",
+      "string"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "base64-decoder",
+    "name": "Base64 Decoder",
+    "tagline": "Decode Base64 string back into readable plain text.",
+    "description": "Fast Base64 string decoder with automatic UTF-8 validation and error handling.",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "url": "/tools/base64-decoder.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m7 15 5 5 5-5'/><path d='m7 9 5-5 5 5'/></svg>",
+    "popular": false,
+    "recentlyAdded": true,
+    "tags": [
+      "base64",
+      "decoder",
+      "decode",
+      "developer",
+      "text",
+      "binary"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "image-compressor",
+    "name": "Image Compressor",
+    "tagline": "Compress PNG and JPG images without losing noticeable quality.",
+    "description": "100% private browser image compressor. Reduce image file size by up to 80% while retaining crisp visuals.",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "url": "/tools/image-compressor.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2' ry='2'/><circle cx='9' cy='9' r='2'/><path d='m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "image",
+      "compressor",
+      "photo",
+      "jpg",
+      "png",
+      "optimizer",
+      "resize"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "webp-converter",
+    "name": "WebP Converter",
+    "tagline": "Convert PNG and JPG images to next-gen WebP format.",
+    "description": "Convert JPG, PNG, and GIF images to highly optimized WebP format for faster web page load speed.",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "url": "/tools/webp-converter.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7'/><line x1='16' x2='22' y1='5' y2='5'/><line x1='19' x2='19' y1='2' y2='8'/></svg>",
+    "popular": false,
+    "recentlyAdded": true,
+    "tags": [
+      "webp",
+      "converter",
+      "image",
+      "png to webp",
+      "jpg to webp",
+      "next-gen"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "png-to-jpg",
+    "name": "PNG to JPG",
+    "tagline": "Convert transparent PNG images to JPG standard format.",
+    "description": "Batch convert PNG images to JPG with custom background fill color selector for transparent areas.",
+    "category": "converters",
+    "categoryName": "Converters",
+    "url": "/tools/png-to-jpg.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 16l4.586-4.586a2 2 0 0 1 2.828 0L16 16'/><path d='M14 14l1.586-1.586a2 2 0 0 1 2.828 0L20 14'/><rect width='18' height='18' x='3' y='3' rx='2'/></svg>",
+    "popular": false,
+    "recentlyAdded": true,
+    "tags": [
+      "png to jpg",
+      "converter",
+      "image",
+      "png",
+      "jpg",
+      "photo"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "jpg-to-png",
+    "name": "JPG to PNG",
+    "tagline": "Convert JPG pictures into high-quality PNG format.",
+    "description": "Convert JPG/JPEG images into losslessly formatted PNG files right in your browser.",
+    "category": "converters",
+    "categoryName": "Converters",
+    "url": "/tools/jpg-to-png.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2'/><circle cx='8.5' cy='8.5' r='1.5'/><path d='m21 15-5-5L5 21'/></svg>",
+    "popular": false,
+    "recentlyAdded": true,
+    "tags": [
+      "jpg to png",
+      "converter",
+      "image",
+      "jpg",
+      "png",
+      "lossless"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "favicon-generator",
+    "name": "Favicon Generator",
+    "tagline": "Generate favicons and app icons in multiple standard sizes.",
+    "description": "Turn any logo or picture into 16x16, 32x32, 48x48 favicons, Apple Touch icons (180x180), and Android app icons.",
+    "category": "image-tools",
+    "categoryName": "Image Tools",
+    "url": "/tools/favicon-generator.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "favicon",
+      "generator",
+      "icon",
+      "website",
+      "apple touch icon",
+      "logo"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "html-encoder",
+    "name": "HTML Encoder & Decoder",
+    "tagline": "Escape and unescape special HTML characters safely.",
+    "description": "Convert HTML symbols into entity codes (&lt;, &gt;, &amp;) or decode entity codes back into raw HTML.",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "url": "/tools/html-encoder.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='16 18 22 12 16 6'/><polyline points='8 6 2 12 8 18'/></svg>",
+    "popular": false,
+    "recentlyAdded": false,
+    "tags": [
+      "html",
+      "encoder",
+      "decoder",
+      "entities",
+      "escape",
+      "developer"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "css-minifier",
+    "name": "CSS Minifier",
+    "tagline": "Minify and compress CSS stylesheets to reduce bandwidth.",
+    "description": "Remove comments, extra whitespace, and redundant syntax from CSS files to boost web page speeds.",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "url": "/tools/css-minifier.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M4 6h16'/><path d='M4 12h10'/><path d='M4 18h14'/></svg>",
+    "popular": false,
+    "recentlyAdded": true,
+    "tags": [
+      "css",
+      "minifier",
+      "compressor",
+      "stylesheet",
+      "performance",
+      "web"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "js-minifier",
+    "name": "JavaScript Minifier",
+    "tagline": "Minify JavaScript code for fast browser execution.",
+    "description": "Compress JavaScript code, remove comments and blank lines, and reduce script bundle payload.",
+    "category": "developer-tools",
+    "categoryName": "Developer Tools",
+    "url": "/tools/js-minifier.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 4L4 20'/><path d='M4 4l16 16'/></svg>",
+    "popular": false,
+    "recentlyAdded": true,
+    "tags": [
+      "javascript",
+      "js",
+      "minifier",
+      "code",
+      "compress",
+      "script"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "markdown-preview",
+    "name": "Markdown Preview",
+    "tagline": "Write Markdown text with instant live side-by-side HTML render.",
+    "description": "Live Markdown editor featuring GitHub Flavored Markdown (GFM) parsing, HTML output preview, and raw HTML export.",
+    "category": "text-tools",
+    "categoryName": "Text Tools",
+    "url": "/tools/markdown-preview.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 19V5'/><path d='M5 12l7-7 7 7'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "markdown",
+      "preview",
+      "editor",
+      "text",
+      "gfm",
+      "documentation"
+    ],
+    "updatedDate": "2026-08-01"
+  },
+  {
+    "id": "timestamp-converter",
+    "name": "Timestamp Converter",
+    "tagline": "Convert Unix timestamps to human-readable dates and back.",
+    "description": "Convert Unix epoch timestamps (seconds & milliseconds) to UTC / local date formats and vice versa.",
+    "category": "converters",
+    "categoryName": "Converters",
+    "url": "/tools/timestamp-converter.html",
+    "icon": "<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 16 14'/></svg>",
+    "popular": true,
+    "recentlyAdded": false,
+    "tags": [
+      "timestamp",
+      "epoch",
+      "unix",
+      "converter",
+      "date",
+      "time"
+    ],
+    "updatedDate": "2026-08-01"
+  }
+]

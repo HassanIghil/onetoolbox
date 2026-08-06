@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function() {
+      var t = localStorage.getItem('onetoolbox_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneToolBox — Free Online Tools (No Registration, No Watermark)</title>
+  <meta name="description"
+    content="Free online browser utilities for developers, creators, and professionals. Fast, 100% private, and reliable. No registration, no watermark.">
+  <meta name="keywords"
+    content="online tools, developer tools, image compressor, json formatter, qr code generator, password generator, uuid generator, web utilities">
+  <link rel="canonical" href="https://onetoolbox.com/">
+
+  <!-- OpenGraph / Twitter Cards -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="OneToolBox — Free Online Tools (No Registration, No Watermark)">
+  <meta property="og:description"
+    content="Free online browser utilities for developers, creators, and professionals. Fast, 100% private, and reliable. No registration, no watermark.">
+  <meta property="og:url" content="https://onetoolbox.com/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OneToolBox — Free Online Tools (No Registration, No Watermark)">
+  <meta name="twitter:description"
+    content="Free online browser utilities for developers, creators, and professionals. Fast, 100% private, and reliable. No registration, no watermark.">
+
+  <!-- Schema.org WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "OneToolBox",
+    "url": "https://onetoolbox.com/",
+    "description": "Free online tools that work directly in your browser. No installation. No registration.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://onetoolbox.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="manifest" href="/manifest.json">
+</head>
+
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="brand-logo">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </svg>
+          </div>
+          <span>OneToolBox</span>
+        </a>
+
+        <button class="header-search-btn trigger-search" aria-label="Search tools">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <span>Search tools...</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/categories/index.html" class="nav-link">Categories</a></li>
+            <li><a href="/about.html" class="nav-link">About</a></li>
+            <li><a href="/contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode"></button>
+          <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Toggle navigation menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="20" y1="12" y2="12" />
+              <line x1="4" x2="20" y1="6" y2="6" />
+              <line x1="4" x2="20" y1="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Nav -->
+  <div id="mobile-nav" class="mobile-nav">
+    <ul class="mobile-nav-list">
+      <li><a href="/categories/index.html" class="mobile-nav-link">Categories</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="/privacy.html" class="mobile-nav-link">Privacy Policy</a></li>
+      <li><a href="/terms.html" class="mobile-nav-link">Terms of Service</a></li>
+    </ul>
+  </div>
+
+  <main class="main-content">
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            100% Client-Side Privacy Guarantee
+          </div>
+          <h1 class="hero-title">Every Tool You Need, In One Toolbox</h1>
+          <p class="hero-subtitle">
+            Free online utilities for developers, creators, students, and professionals.<br>
+            Fast. Private. Works directly in your browser without software installation or accounts.
+          </p>
+          <div class="hero-buttons">
+            <a href="#popular-tools" class="btn btn-primary btn-lg">Explore Tools</a>
+            <a href="/categories/index.html" class="btn btn-secondary btn-lg">Browse Categories</a>
+          </div>
+          <div class="trust-bar">
+            <div class="trust-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" class="text-primary">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>No installation</span>
+            </div>
+            <div class="trust-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" class="text-primary">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>No registration</span>
+            </div>
+            <div class="trust-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" class="text-primary">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Zero server logging</span>
+            </div>
+            <div class="trust-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" class="text-primary">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              <span>Instant browser speed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Native Ads Space -->
+    <div class="container">
+      <div class="ad-slot-native"></div>
+    </div>
+
+    <!-- Featured Categories -->
+    <section style="padding: var(--space-8) 0;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Featured Categories</h2>
+            <p class="section-desc">Organized tools tailored for your exact workflow</p>
+          </div>
+          <a href="/categories/index.html" class="section-link">View All &rarr;</a>
+        </div>
+
+        <div class="grid-categories">
+          <a href="/categories/developer-tools.html" class="category-card">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </div>
+            <h3 class="category-title">Developer Tools</h3>
+            <span class="category-count">JSON, UUID, Minifiers</span>
+          </a>
+
+          <a href="/categories/image-tools.html" class="category-card">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
+                <circle cx="9" cy="9" r="2" />
+                <path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" />
+              </svg>
+            </div>
+            <h3 class="category-title">Image Tools</h3>
+            <span class="category-count">Compressor, WebP, Favicons</span>
+          </a>
+
+          <a href="/categories/text-tools.html" class="category-card">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" x2="8" y1="13" y2="13" />
+                <line x1="16" x2="8" y1="17" y2="17" />
+              </svg>
+            </div>
+            <h3 class="category-title">Text Tools</h3>
+            <span class="category-count">Markdown, Base64, Escaper</span>
+          </a>
+
+          <a href="/categories/calculators.html" class="category-card">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="16" height="20" x="4" y="2" rx="2" />
+                <line x1="8" x2="16" y1="6" y2="6" />
+                <line x1="16" x2="16" y1="14" y2="18" />
+                <path d="M16 10h.01" />
+                <path d="M12 10h.01" />
+                <path d="M8 10h.01" />
+                <path d="M12 14h.01" />
+                <path d="M8 14h.01" />
+                <path d="M12 18h.01" />
+                <path d="M8 18h.01" />
+              </svg>
+            </div>
+            <h3 class="category-title">Calculators</h3>
+            <span class="category-count">Age, Passwords, Entropy</span>
+          </a>
+
+          <a href="/categories/converters.html" class="category-card">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m7 15 5 5 5-5" />
+                <path d="m7 9 5-5 5 5" />
+              </svg>
+            </div>
+            <h3 class="category-title">Converters</h3>
+            <span class="category-count">PNG to JPG, Timestamp, Formats</span>
+          </a>
+
+          <a href="/categories/social-media.html" class="category-card">
+            <div class="category-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="5" height="5" x="3" y="3" rx="1" />
+                <rect width="5" height="5" x="16" y="3" rx="1" />
+                <rect width="5" height="5" x="3" y="16" rx="1" />
+                <path d="M21 16h-3a2 2 0 0 0-2 2v3" />
+              </svg>
+            </div>
+            <h3 class="category-title">Social Media</h3>
+            <span class="category-count">YouTube Thumbnails, QR Codes</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Tools -->
+    <section id="popular-tools" style="padding: var(--space-8) 0;">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Popular Tools</h2>
+            <p class="section-desc">Most used online tools by our global community</p>
+          </div>
+        </div>
+
+        <div class="grid-tools" data-render-popular="true">
+          <!-- Populated dynamically via tools-manager.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Recently Added Tools -->
+    <section
+      style="padding: var(--space-8) 0; background-color: var(--bg-surface); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Recently Added</h2>
+            <p class="section-desc">Freshly launched utilities and web tools</p>
+          </div>
+        </div>
+
+        <div class="grid-tools" data-render-recently-added="true">
+          <!-- Populated dynamically via tools-manager.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Native Ads Space -->
+    <div class="container">
+      <div class="ad-slot-native"></div>
+    </div>
+
+    <!-- Why OneToolBox Section -->
+    <section style="padding: var(--space-12) 0;">
+      <div class="container">
+        <div style="text-align: center; max-width: 600px; margin: 0 auto var(--space-10);">
+          <h2 class="section-title" style="font-size: 2rem;">Why OneToolBox?</h2>
+          <p class="section-desc" style="font-size: 1rem; margin-top: var(--space-2);">Built with uncompromising
+            standards for speed, security, and effortless utility.</p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+            </div>
+            <h3 class="why-title">100% Private & Local</h3>
+            <p class="why-desc">Your files, images, code, and text never touch a remote server. Everything is calculated
+              right inside your web browser.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
+            <h3 class="why-title">Instant Browser Speed</h3>
+            <p class="why-desc">Zero network waiting times. Powered by native modern JavaScript APIs for near-instant
+              execution and smooth responsive feedback.</p>
+          </div>
+
+          <div class="why-card">
+            <div class="why-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="4.93" x2="19.07" y1="4.93" y2="19.07" />
+              </svg>
+            </div>
+            <h3 class="why-title">No Sign Up or Ads Clutter</h3>
+            <p class="why-desc">No paywalls, subscriptions, mandatory accounts, or invasive popups. Just pure, clean
+              tools ready when you need them.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Search Modal -->
+  <div id="search-modal-backdrop" class="search-modal-backdrop">
+    <div class="search-modal">
+      <div class="search-input-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input type="text" id="search-modal-input" placeholder="Type a tool name or keyword (e.g. JSON, QR, WebP)..."
+          autocomplete="off">
+        <kbd>ESC</kbd>
+      </div>
+      <ul id="search-results-list" class="search-results-list">
+        <!-- Results rendered dynamically -->
+      </ul>
+      <div class="search-modal-footer">
+        <span>Press <kbd>&uarr;</kbd> <kbd>&darr;</kbd> to navigate</span>
+        <span>Press <kbd>ESC</kbd> to exit</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="brand-logo">
+            <div class="logo-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+              </svg>
+            </div>
+            <span>OneToolBox</span>
+          </a>
+          <p>Every Tool. One Place. Free, high-performance, browser-based online tools designed for maximum privacy and
+            simplicity.</p>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="/tools/image-compressor.html">Image Compressor</a></li>
+            <li><a href="/tools/json-formatter.html">JSON Formatter</a></li>
+            <li><a href="/tools/uuid-generator.html">UUID Generator</a></li>
+            <li><a href="/tools/qr-code-generator.html">QR Code Generator</a></li>
+            <li><a href="/tools/password-generator.html">Password Generator</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="/categories/developer-tools.html">Developer Tools</a></li>
+            <li><a href="/categories/image-tools.html">Image Tools</a></li>
+            <li><a href="/categories/text-tools.html">Text Tools</a></li>
+            <li><a href="/categories/calculators.html">Calculators</a></li>
+            <li><a href="/categories/converters.html">Converters</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Company & Legal</h4>
+          <ul class="footer-links">
+            <li><a href="/about.html">About Us</a></li>
+            <li><a href="/contact.html">Contact Us</a></li>
+            <li><a href="/privacy.html">Privacy Policy</a></li>
+            <li><a href="/terms.html">Terms of Service</a></li>
+            <li><a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 OneToolBox. All rights reserved.</span>
+        <span>Crafted for privacy, speed, and usability.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/tools-manager.js"></script>
+</body>
+
+</html>

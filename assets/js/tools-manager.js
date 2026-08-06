@@ -1,0 +1,77 @@
+/**
+ * OneToolBox Tools Registry & Component Manager
+ * Automatically updates popular tools, recently added, categories, and related tools from tools.json
+ */
+
+(function () {
+  'use strict';
+
+  async function fetchTools() {
+    try {
+      const res = await fetch('/tools.json');
+      return await res.json();
+    } catch (err) {
+      console.error('Failed to load tools database:', err);
+      return [];
+    }
+  }
+
+  function createToolCardHtml(tool) {
+    return `
+      <div class="tool-card">
+        <div>
+          <div class="tool-card-header">
+            <div class="tool-icon">${tool.icon}</div>
+            <div>
+              <h3 class="tool-card-title">${tool.name}</h3>
+            </div>
+          </div>
+          <p class="tool-card-desc">${tool.tagline || tool.description}</p>
+        </div>
+        <div class="tool-card-footer">
+          <span class="badge badge-muted">${tool.categoryName}</span>
+          <a href="${tool.url}" class="btn btn-secondary btn-sm">Use Tool &rarr;</a>
+        </div>
+      </div>
+    `;
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const tools = await fetchTools();
+    if (!tools || tools.length === 0) return;
+
+    // Render Popular Tools
+    const popularContainer = document.querySelector('[data-render-popular="true"]');
+    if (popularContainer) {
+      const popularTools = tools.filter(t => t.popular);
+      popularContainer.innerHTML = popularTools.map(createToolCardHtml).join('');
+    }
+
+    // Render Recently Added Tools
+    const recentContainer = document.querySelector('[data-render-recently-added="true"]');
+    if (recentContainer) {
+      const recentTools = tools.filter(t => t.recentlyAdded);
+      recentContainer.innerHTML = recentTools.map(createToolCardHtml).join('');
+    }
+
+    // Render Category specific tool list
+    const categoryContainers = document.querySelectorAll('[data-render-category]');
+    categoryContainers.forEach(container => {
+      const catId = container.getAttribute('data-render-category');
+      const catTools = tools.filter(t => t.category === catId);
+      container.innerHTML = catTools.map(createToolCardHtml).join('');
+    });
+
+    // Render Related Tools on Tool Pages
+    const relatedContainer = document.querySelector('[data-render-related]');
+    if (relatedContainer) {
+      const currentCat = relatedContainer.getAttribute('data-render-related');
+      const currentToolId = relatedContainer.getAttribute('data-current-tool-id');
+      const related = tools
+        .filter(t => t.category === currentCat && t.id !== currentToolId)
+        .slice(0, 4);
+      relatedContainer.innerHTML = related.map(createToolCardHtml).join('');
+    }
+  });
+
+})();

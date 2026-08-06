@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function() {
+      var t = localStorage.getItem('onetoolbox_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Lightweight QR Generator -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-creator@1.0.0/dist/qr-creator.min.js"></script>
+
+  <!-- Open Graph / Facebook -->
+
+  <!-- Twitter -->
+
+
+  {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "QR Code Generator",
+  "url": "https://onetoolbox.com/tools/qr-code-generator.html",
+  "description": "Generate custom QR codes for URLs, text, Wi-Fi, and contacts with custom foreground & background colors. Download instantly in PNG format.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas or Web Cryptography API.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OneToolBox",
+    "url": "https://onetoolbox.com",
+    "logo": "https://onetoolbox.com/assets/icons/icon-512.png"
+  }
+}
+  </script>
+  {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://onetoolbox.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Social Media",
+      "item": "https://onetoolbox.com/categories/social-media.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "QR Code Generator",
+      "item": "https://onetoolbox.com/tools/qr-code-generator.html"
+    }
+  ]
+}
+  </script>
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do generated static QR codes ever expire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. These are static QR codes containing your exact data embedded directly into the matrix pattern. They never expire and require no backend server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use generated QR codes for commercial print?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All QR codes generated on OneToolBox are 100% free for both personal and commercial use in digital ads, business cards, and print materials."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is error correction in QR codes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Error correction allows QR codes to remain readable even if up to 30% of the image is damaged, dirty, or covered by a logo."
+      }
+    }
+  ]
+}
+  </script>
+
+  <title>Free QR Code Generator — Custom Vector & PNG (No Watermark) | OneToolBox</title>
+  <meta name="description" content="Generate custom QR codes for URLs, text, Wi-Fi, and contacts with custom colors. Download instant PNG. No registration, no watermark.">
+  <meta name="keywords" content="qr code generator, free qr code generator, custom qr code, url to qr code, wifi qr code generator, qr code creator, download qr code png">
+  <link rel="canonical" href="https://onetoolbox.com/tools/qr-code-generator.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onetoolbox.com/tools/qr-code-generator.html">
+  <meta property="og:title" content="Free QR Code Generator — Custom Vector & PNG (No Watermark)">
+  <meta property="og:description" content="Generate custom QR codes for URLs, text, Wi-Fi, and contacts with custom colors. Download instant PNG. No registration, no watermark.">
+  <meta property="og:site_name" content="OneToolBox">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://onetoolbox.com/tools/qr-code-generator.html">
+  <meta name="twitter:title" content="Free QR Code Generator — Custom Vector & PNG (No Watermark)">
+  <meta name="twitter:description" content="Generate custom QR codes for URLs, text, Wi-Fi, and contacts with custom colors. Download instant PNG. No registration, no watermark.">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "QR Code Generator",
+  "url": "https://onetoolbox.com/tools/qr-code-generator.html",
+  "description": "Generate custom QR codes for URLs, text, Wi-Fi, and contacts with custom colors. Download instant PNG. No registration, no watermark.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas or Web Cryptography API.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "OneToolBox",
+    "url": "https://onetoolbox.com",
+    "logo": "https://onetoolbox.com/assets/icons/icon-512.png"
+  }
+}
+  </script>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://onetoolbox.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Social Media",
+      "item": "https://onetoolbox.com/categories/social-media.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "QR Code Generator",
+      "item": "https://onetoolbox.com/tools/qr-code-generator.html"
+    }
+  ]
+}
+  </script>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do generated static QR codes ever expire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. These are static QR codes containing your exact data embedded directly into the matrix pattern. They never expire and require no backend server."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use generated QR codes for commercial print?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. All QR codes generated on OneToolBox are 100% free for both personal and commercial use in digital ads, business cards, and print materials."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is error correction in QR codes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Error correction allows QR codes to remain readable even if up to 30% of the image is damaged, dirty, or covered by a logo."
+      }
+    }
+  ]
+}
+  </script>
+
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="brand-logo">
+          <div class="logo-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <span>OneToolBox</span>
+        </a>
+
+        <button class="header-search-btn trigger-search" aria-label="Search tools">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search tools...</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/categories/index.html" class="nav-link">Categories</a></li>
+            <li><a href="/about.html" class="nav-link">About</a></li>
+            <li><a href="/contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode"></button>
+          <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Toggle navigation menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Mobile Drawer Nav -->
+  <div id="mobile-nav" class="mobile-nav">
+    <ul class="mobile-nav-list">
+      <li><a href="/categories/index.html" class="mobile-nav-link">Categories</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="/privacy.html" class="mobile-nav-link">Privacy Policy</a></li>
+      <li><a href="/terms.html" class="mobile-nav-link">Terms of Service</a></li>
+    </ul>
+  </div>
+
+  <main class="main-content container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/categories/social-media.html">Social Media</a> &rsaquo; <span>QR Code Generator</span>
+    </div>
+
+    <div class="tool-header-wrapper">
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+        <span class="badge badge-accent">Social Media</span>
+        <span class="badge badge-muted">Generator</span>
+      </div>
+      <h1 class="page-title">QR Code Generator</h1>
+      <p class="page-subtitle">Create clean, high-resolution QR codes for websites, plain text, and contact info.</p>
+    </div>
+
+    <!-- Tool Container -->
+    <div class="tool-container">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+        <div>
+          <div class="form-group">
+            <label for="qr-text" class="form-label">QR Content (URL or Text)</label>
+            <textarea id="qr-text" class="textarea-control" style="min-height: 100px;">https://onetoolbox.com</textarea>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
+            <div class="form-group">
+              <label for="qr-fg" class="form-label">Code Color</label>
+              <input type="color" id="qr-fg" class="input-control" value="#111827" style="height: 42px; padding: 4px;">
+            </div>
+            <div class="form-group">
+              <label for="qr-bg" class="form-label">Background Color</label>
+              <input type="color" id="qr-bg" class="input-control" value="#ffffff" style="height: 42px; padding: 4px;">
+            </div>
+          </div>
+
+          <button id="btn-gen-qr" class="btn btn-primary btn-full">Generate QR Code</button>
+        </div>
+
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-6);">
+          <div id="qr-canvas-holder" style="padding: 16px; background-color: #ffffff; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin-bottom: var(--space-4);"></div>
+          <button id="btn-dl-qr" class="btn btn-secondary btn-sm">Download PNG Image</button>
+        </div>
+      </div>
+    </div>
+
+    
+    <!-- AEO & GEO Structured Content (Answer Engine & Generative Optimization) -->
+    <section style="margin-top: var(--space-10); margin-bottom: var(--space-10);">
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">What is QR Code Generator?</h2>
+      <div class="why-card" style="margin-bottom: var(--space-6);">
+        <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">
+          A QR Code Generator converts text, website URLs, contact info, or Wi-Fi credentials into a 2D optical barcode grid matrix. Scannable by smartphones, QR codes use Reed-Solomon error correction to maintain scannability even when partially obscured.
+        </p>
+      </div>
+
+      <h3 class="section-title" style="font-size: 1.25rem; margin-bottom: var(--space-3);">How to Use QR Code Generator in 3 Easy Steps</h3>
+      <div class="why-card" style="margin-bottom: var(--space-6);">
+        <ol style="padding-left: 20px; color: var(--text-secondary); line-height: 1.8;">
+          <li>Type or paste your URL, text, or content into the input field.</li><li>Customize code color and background color to match your brand.</li><li>Click 'Generate QR Code' and press 'Download PNG Image' to save your scannable code.</li>
+        </ol>
+      </div>
+
+      <h3 class="section-title" style="font-size: 1.25rem; margin-bottom: var(--space-3);">Key Features & Privacy Guarantee</h3>
+      <div class="why-grid" style="margin-bottom: var(--space-8);">
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">100% Client-Side Privacy</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">All computations execute directly inside your browser. Zero bytes are uploaded to remote servers.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">Zero Latency Speed</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Powered by modern native JavaScript APIs for instant results without network delays.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">No Registration or Ads</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Free tool with unlimited usage. No accounts, sign-ups, or invasive popups required.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions (PAA & AEO) -->
+    <section style="margin-bottom: var(--space-10);">
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        
+        <div class="faq-item">
+          <button class="faq-question">Do generated static QR codes ever expire?</button>
+          <div class="faq-answer">No. These are static QR codes containing your exact data embedded directly into the matrix pattern. They never expire and require no backend server.</div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">Can I use generated QR codes for commercial print?</button>
+          <div class="faq-answer">Yes. All QR codes generated on OneToolBox are 100% free for both personal and commercial use in digital ads, business cards, and print materials.</div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question">What is error correction in QR codes?</button>
+          <div class="faq-answer">Error correction allows QR codes to remain readable even if up to 30% of the image is damaged, dirty, or covered by a logo.</div>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section>
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Related Tools</h2>
+      <div class="grid-tools" data-render-related="social-media" data-current-tool-id="qr-code-generator"></div>
+    </section>
+  </main>
+
+  <!-- Search Modal -->
+  <div id="search-modal-backdrop" class="search-modal-backdrop">
+    <div class="search-modal">
+      <div class="search-input-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-modal-input" placeholder="Type a tool name or keyword..." autocomplete="off">
+        <kbd>ESC</kbd>
+      </div>
+      <ul id="search-results-list" class="search-results-list"></ul>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <span>&copy; 2026 OneToolBox. All rights reserved.</span>
+        <a href="/" class="section-link">&larr; Back to Homepage</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/tools-manager.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const qrText = document.getElementById('qr-text');
+      const fgColor = document.getElementById('qr-fg');
+      const bgColor = document.getElementById('qr-bg');
+      const holder = document.getElementById('qr-canvas-holder');
+      const genBtn = document.getElementById('btn-gen-qr');
+      const dlBtn = document.getElementById('btn-dl-qr');
+
+      function updateQR() {
+        holder.innerHTML = '';
+        const canvas = document.createElement('canvas');
+        if (window.QrCreator) {
+          QrCreator.render({
+            text: qrText.value || 'https://onetoolbox.com',
+            radius: 0.0,
+            ecLevel: 'H',
+            fill: fgColor.value,
+            background: bgColor.value,
+            size: 200
+          }, canvas);
+        }
+        holder.appendChild(canvas);
+      }
+
+      genBtn.addEventListener('click', updateQR);
+      qrText.addEventListener('input', updateQR);
+      fgColor.addEventListener('input', updateQR);
+      bgColor.addEventListener('input', updateQR);
+
+      dlBtn.addEventListener('click', () => {
+        const canvas = holder.querySelector('canvas');
+        if (!canvas) return;
+        const a = document.createElement('a');
+        a.download = 'qrcode.png';
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+        OneToolBox.toast('QR Code downloaded!');
+      });
+
+      updateQR();
+    });
+  </script>
+</body>
+</html>
