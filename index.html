@@ -68,20 +68,7 @@
     content="Free online browser utilities for developers, creators, and professionals. Fast, 100% private, and reliable. No registration, no watermark.">
 
   <!-- Schema.org WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "OneToolBox",
-    "url": "https://onetoolbox.dev/",
-    "description": "Free online tools that work directly in your browser. No installation. No registration.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://onetoolbox.dev/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
+  
 
     <!-- Preconnect & Non-blocking Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,6 +77,44 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="manifest" href="/manifest.json">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": "OneToolBox",
+      "url": "https://onetoolbox.dev/",
+      "description": "Free online developer, image, text, calculator, and converter tools that work 100% client-side in your browser.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://onetoolbox.dev/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "OneToolBox",
+      "url": "https://onetoolbox.dev",
+      "logo": "https://onetoolbox.dev/apple-touch-icon.png"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "OneToolBox Web Utilities Suite",
+      "url": "https://onetoolbox.dev/",
+      "description": "Comprehensive suite of 100% private, client-side online web utilities, developer tools, image converters, and text formatters.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+  ]
+}
+  </script>
 </head>
 
 <body>

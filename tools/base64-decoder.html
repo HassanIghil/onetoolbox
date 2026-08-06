@@ -79,18 +79,21 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/main.min.css">
+  
+  
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebApplication",
+      "@type": "SoftwareApplication",
       "name": "Base64 Decoder",
       "url": "https://onetoolbox.dev/tools/base64-decoder",
       "description": "Decode Base64 encoded strings back into readable plain text instantly. Features auto UTF-8 decoding & copy. No registration, no watermark.",
-      "applicationCategory": "UtilityApplication",
+      "applicationCategory": "DeveloperApplication",
       "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas or Web Cryptography API.",
+      "browserRequirements": "Requires JavaScript.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -101,6 +104,18 @@
         "name": "OneToolBox",
         "url": "https://onetoolbox.dev",
         "logo": "https://onetoolbox.dev/apple-touch-icon.png"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Base64 Decoder",
+      "url": "https://onetoolbox.dev/tools/base64-decoder",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
       }
     },
     {
@@ -125,42 +140,10 @@
           "item": "https://onetoolbox.dev/tools/base64-decoder"
         }
       ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What happens if I input invalid Base64 text?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The decoder detects invalid character ranges or padding errors and displays a helpful error message without crashing."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does this support multi-byte Unicode and emoji decoding?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. OneToolBox uses UTF-8 byte decoding to ensure non-English characters, special symbols, and emojis decode perfectly."
-          }
-        }
-      ]
     }
   ]
 }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "OneToolBox",
-    "url": "https://onetoolbox.dev",
-    "logo": "https://onetoolbox.dev/apple-touch-icon.png",
-    "sameAs": []
-  }
-  </script>
-
 </head>
 <body>
   <!-- Page Preloader -->

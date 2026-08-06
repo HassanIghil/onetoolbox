@@ -79,18 +79,22 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/main.min.css">
+  
+  
+  <!-- Lightweight QR Generator -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-creator@1.0.0/dist/qr-creator.min.js"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebApplication",
-      "name": "QR Code Generator",
+      "@type": "SoftwareApplication",
+      "name": "Free QR Code Generator",
       "url": "https://onetoolbox.dev/tools/qr-code-generator",
       "description": "Generate custom QR codes for URLs, text, Wi-Fi, and contacts with custom colors. Download instant PNG. No registration, no watermark.",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas or Web Cryptography API.",
+      "browserRequirements": "Requires JavaScript.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -101,6 +105,18 @@
         "name": "OneToolBox",
         "url": "https://onetoolbox.dev",
         "logo": "https://onetoolbox.dev/apple-touch-icon.png"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "QR Code Generator",
+      "url": "https://onetoolbox.dev/tools/qr-code-generator",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
       }
     },
     {
@@ -158,18 +174,6 @@
   ]
 }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "OneToolBox",
-    "url": "https://onetoolbox.dev",
-    "logo": "https://onetoolbox.dev/apple-touch-icon.png",
-    "sameAs": []
-  }
-  </script>
-  <!-- Lightweight QR Generator -->
-  <script src="https://cdn.jsdelivr.net/npm/qr-creator@1.0.0/dist/qr-creator.min.js"></script>
 </head>
 <body>
   <!-- Page Preloader -->

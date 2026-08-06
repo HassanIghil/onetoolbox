@@ -79,18 +79,22 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/css/main.min.css">
+  
+  
+  <!-- Marked Markdown Parser -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "WebApplication",
-      "name": "Markdown Preview",
+      "@type": "SoftwareApplication",
+      "name": "Markdown Previewer",
       "url": "https://onetoolbox.dev/tools/markdown-preview",
       "description": "Write Markdown text with instant live side-by-side HTML rendering. Supports GitHub Flavored Markdown. No registration, no watermark.",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "All",
-      "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas or Web Cryptography API.",
+      "browserRequirements": "Requires JavaScript.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -101,6 +105,18 @@
         "name": "OneToolBox",
         "url": "https://onetoolbox.dev",
         "logo": "https://onetoolbox.dev/apple-touch-icon.png"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Markdown Preview",
+      "url": "https://onetoolbox.dev/tools/markdown-preview",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
       }
     },
     {
@@ -125,35 +141,10 @@
           "item": "https://onetoolbox.dev/tools/markdown-preview"
         }
       ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Does this markdown editor support GitHub Flavored Markdown (GFM)?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. It supports code blocks, tables, task lists, strikethrough, and standard GFM specifications powered by marked.js."
-          }
-        }
-      ]
     }
   ]
 }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "OneToolBox",
-    "url": "https://onetoolbox.dev",
-    "logo": "https://onetoolbox.dev/apple-touch-icon.png",
-    "sameAs": []
-  }
-  </script>
-  <!-- Marked Markdown Parser -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <!-- Page Preloader -->
