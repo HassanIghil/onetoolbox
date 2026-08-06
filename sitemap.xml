@@ -13,67 +13,67 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/categories/index.html</loc>
+    <loc>https://onetoolbox.dev/categories/</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/categories/developer-tools.html</loc>
+    <loc>https://onetoolbox.dev/categories/developer-tools</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/categories/image-tools.html</loc>
+    <loc>https://onetoolbox.dev/categories/image-tools</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/categories/text-tools.html</loc>
+    <loc>https://onetoolbox.dev/categories/text-tools</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/categories/calculators.html</loc>
+    <loc>https://onetoolbox.dev/categories/calculators</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/categories/converters.html</loc>
+    <loc>https://onetoolbox.dev/categories/converters</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/categories/social-media.html</loc>
+    <loc>https://onetoolbox.dev/categories/social-media</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/about.html</loc>
+    <loc>https://onetoolbox.dev/about</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/contact.html</loc>
+    <loc>https://onetoolbox.dev/contact</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/privacy.html</loc>
+    <loc>https://onetoolbox.dev/privacy</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://onetoolbox.dev/terms.html</loc>
+    <loc>https://onetoolbox.dev/terms</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
