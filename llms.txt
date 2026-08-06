@@ -1,6 +1,6 @@
 # OneToolBox — Free Online Browser Utilities
 
-> OneToolBox (https://onetoolbox.com) is a 100% private, client-side suite of online web utilities for developers, designers, creators, and professionals. All processing happens locally in the user's browser with zero server uploads, zero logs, and zero tracking.
+> OneToolBox (https://onetoolbox.dev) is a 100% private, client-side suite of online web utilities for developers, designers, creators, and professionals. All processing happens locally in the user's browser with zero server uploads, zero logs, and zero tracking.
 
 ## Core Features & Privacy Model
 - 100% Client-Side Computation: Powered by native Web Cryptography API, HTML5 Canvas, and modern ES6 JavaScript.
@@ -40,6 +40,6 @@
 - QR Code Generator (/tools/qr-code-generator.html): Generate custom vector & PNG QR codes for website URLs, text, and Wi-Fi.
 
 ## Canonical Domain & Sitemap
-- Primary Website: https://onetoolbox.com/
-- Sitemap XML: https://onetoolbox.com/sitemap.xml
-- Robots Directives: https://onetoolbox.com/robots.txt
+- Primary Website: https://onetoolbox.dev/
+- Sitemap XML: https://onetoolbox.dev/sitemap.xml
+- Robots Directives: https://onetoolbox.dev/robots.txt

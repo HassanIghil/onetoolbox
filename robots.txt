@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Allow: /llms.txt
 
-Sitemap: https://onetoolbox.com/sitemap.xml
+Sitemap: https://onetoolbox.dev/sitemap.xml
