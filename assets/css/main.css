@@ -838,14 +838,19 @@ kbd {
   line-height: 1.6;
 }
 
-/* Natural Ads Space (Reserved Layout Slot without placeholding text) */
+/* Natural Ads Space (Collapsed when empty to prevent unnecessary white gap) */
 .ad-slot-native {
-  margin: var(--space-8) 0;
-  min-height: 90px;
+  margin: 0;
+  min-height: 0;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.ad-slot-native:not(:empty) {
+  margin: var(--space-6) 0;
+  min-height: 90px;
 }
 
 /* ==========================================================================
@@ -1099,24 +1104,26 @@ kbd {
   }
 
   .hero-section {
-    padding: var(--space-8) 0 var(--space-6);
+    padding: var(--space-6) 0 var(--space-4);
   }
 
   .hero-title {
-    font-size: 1.75rem;
+    font-size: 1.625rem;
     line-height: 1.2;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
   }
 
   .hero-subtitle {
-    font-size: 0.9375rem;
-    margin-bottom: var(--space-5);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: var(--space-4);
   }
 
   .hero-buttons {
     flex-direction: column;
     width: 100%;
     gap: var(--space-2);
+    margin-bottom: var(--space-5);
   }
 
   .hero-buttons .btn {
@@ -1125,8 +1132,9 @@ kbd {
   }
 
   .trust-bar {
-    gap: 10px 16px;
+    gap: 6px 12px;
     font-size: 0.8125rem;
+    line-height: 1.3;
   }
 
   .section-header {
