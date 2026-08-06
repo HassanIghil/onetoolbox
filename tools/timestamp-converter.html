@@ -226,17 +226,17 @@
         <button id="btn-now" class="btn btn-secondary btn-sm">Use Current Time</button>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+      <div class="tool-grid-2col">
         
         <!-- Unix to Date -->
-        <div>
-          <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: var(--space-4);">Unix Timestamp &rarr; Human Date</h3>
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-6);">
+          <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-4);">1. Unix Timestamp &rarr; Human Date</h3>
           <div class="form-group">
             <label for="ts-input" class="form-label">Unix Timestamp (Seconds or ms)</label>
             <input type="number" id="ts-input" class="input-control" value="1700000000">
           </div>
           
-          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem;">
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9375rem;">
             <div><strong>UTC Time:</strong> <span id="res-utc">--</span></div>
             <div><strong>Local Time:</strong> <span id="res-local">--</span></div>
             <div><strong>ISO 8601:</strong> <span id="res-iso" style="font-family: var(--font-mono);">--</span></div>
@@ -244,14 +244,14 @@
         </div>
 
         <!-- Date to Unix -->
-        <div>
-          <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: var(--space-4);">Human Date &rarr; Unix Timestamp</h3>
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-6);">
+          <h3 style="font-size: 1.125rem; font-weight: 600; margin-bottom: var(--space-4);">2. Human Date &rarr; Unix Timestamp</h3>
           <div class="form-group">
             <label for="date-input" class="form-label">Date & Time Input</label>
             <input type="datetime-local" id="date-input" class="input-control">
           </div>
 
-          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.875rem;">
+          <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9375rem;">
             <div><strong>Unix Seconds:</strong> <span id="res-sec" style="font-family: var(--font-mono); font-weight: 600; color: var(--primary);">--</span></div>
             <div><strong>Unix Milliseconds:</strong> <span id="res-ms" style="font-family: var(--font-mono);">--</span></div>
           </div>

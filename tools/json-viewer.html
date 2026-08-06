@@ -226,13 +226,13 @@
 
     <!-- Tool Container -->
     <div class="tool-container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);">
+      <div class="tool-grid-2col">
         <div>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <label for="json-input" class="form-label" style="margin: 0;">Raw JSON Input</label>
             <button id="btn-sample-json" class="btn btn-secondary btn-sm">Sample Data</button>
           </div>
-          <textarea id="json-input" class="textarea-control" style="min-height: 320px;" placeholder='Paste JSON code here...'>{
+          <textarea id="json-input" class="textarea-control" style="min-height: 240px;" placeholder='Paste JSON code here...'>{
   "name": "OneToolBox",
   "version": 1.0,
   "privacy": true,
@@ -242,7 +242,7 @@
 
         <div>
           <div class="form-label" style="margin-bottom: 8px;">Interactive Tree View</div>
-          <div id="json-tree-output" class="tool-output-box" style="min-height: 320px; background-color: var(--bg-surface);"></div>
+          <div id="json-tree-output" class="tool-output-box" style="min-height: 280px; background-color: var(--bg-surface);"></div>
         </div>
       </div>
     </div>
@@ -260,7 +260,7 @@
       <h3 class="section-title" style="font-size: 1.25rem; margin-bottom: var(--space-3);">How to Use JSON Viewer in 3 Easy Steps</h3>
       <div class="why-card" style="margin-bottom: var(--space-6);">
         <ol style="padding-left: 20px; color: var(--text-secondary); line-height: 1.8;">
-          <li>Paste raw JSON text into the input panel or click 'Sample Data'.</li><li>The interactive tree view automatically updates on the right side.</li><li>Click the arrow toggles (▶ / ▼) next to objects and arrays to expand or collapse nested nodes.</li>
+          <li>Paste raw JSON text into the input panel or click 'Sample Data'.</li><li>The interactive tree view automatically updates below the input panel.</li><li>Click the arrow toggles (▶ / ▼) next to objects and arrays to expand or collapse nested nodes.</li>
         </ol>
       </div>
 

@@ -235,19 +235,19 @@
 
     <!-- Tool Container -->
     <div class="tool-container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8);">
+      <div class="tool-grid-2col">
         <div>
           <div class="form-group">
             <label for="qr-text" class="form-label">QR Content (URL or Text)</label>
-            <textarea id="qr-text" class="textarea-control" style="min-height: 100px;">https://onetoolbox.dev</textarea>
+            <textarea id="qr-text" class="textarea-control" style="min-height: 90px;">https://onetoolbox.dev</textarea>
           </div>
 
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4);">
-            <div class="form-group">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);">
+            <div class="form-group" style="margin: 0;">
               <label for="qr-fg" class="form-label">Code Color</label>
               <input type="color" id="qr-fg" class="input-control" value="#111827" style="height: 42px; padding: 4px;">
             </div>
-            <div class="form-group">
+            <div class="form-group" style="margin: 0;">
               <label for="qr-bg" class="form-label">Background Color</label>
               <input type="color" id="qr-bg" class="input-control" value="#ffffff" style="height: 42px; padding: 4px;">
             </div>
@@ -257,6 +257,7 @@
         </div>
 
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-6);">
+          <div class="form-label" style="margin-bottom: 12px; text-align: center;">Generated QR Code Preview</div>
           <div id="qr-canvas-holder" style="padding: 16px; background-color: #ffffff; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); margin-bottom: var(--space-4);"></div>
           <button id="btn-dl-qr" class="btn btn-secondary btn-sm">Download PNG Image</button>
         </div>

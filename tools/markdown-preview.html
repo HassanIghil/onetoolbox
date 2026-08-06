@@ -219,10 +219,10 @@
 
     <!-- Tool Container -->
     <div class="tool-container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);">
+      <div class="tool-grid-2col">
         <div>
           <div class="form-label" style="margin-bottom: 8px;">Markdown Input</div>
-          <textarea id="md-input" class="textarea-control" style="min-height: 380px;"># OneToolBox Markdown
+          <textarea id="md-input" class="textarea-control" style="min-height: 240px;"># OneToolBox Markdown
 
 Welcome to **OneToolBox**! Every tool in one place.
 
@@ -238,11 +238,11 @@ console.log("Hello World!");
 
         <div>
           <div class="form-label" style="margin-bottom: 8px;">Live HTML Render</div>
-          <div id="md-render" class="tool-output-box" style="min-height: 380px; background-color: var(--bg-surface); line-height: 1.7; word-break: normal;"></div>
+          <div id="md-render" class="tool-output-box" style="min-height: 280px; background-color: var(--bg-surface); line-height: 1.7; word-break: normal;"></div>
         </div>
       </div>
 
-      <div class="tool-actions-bar">
+      <div class="tool-actions-bar" style="margin-top: var(--space-4);">
         <button id="btn-copy-html-output" class="btn btn-secondary btn-sm">Copy Rendered HTML</button>
       </div>
     </div>

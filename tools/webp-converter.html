@@ -228,7 +228,7 @@
     <div class="tool-container">
       <div id="drop-zone" style="border: 2px dashed var(--border-hover); border-radius: var(--radius-lg); padding: var(--space-8); text-align: center; background-color: var(--bg-surface); cursor: pointer;">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto var(--space-3); color: var(--primary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
-        <div style="font-weight: 600; font-size: 1.125rem;">Upload PNG / JPG to convert to WebP</div>
+        <div style="font-weight: 600; font-size: 1.125rem;">Drag & drop image, click to browse, or paste (Ctrl+V) from clipboard</div>
         <input type="file" id="file-input" accept="image/png, image/jpeg" style="display: none;">
       </div>
 
@@ -281,12 +281,12 @@
       let webpBlob = null;
       let originalName = 'image';
 
-      dropZone.addEventListener('click', () => fileInput.click());
-      fileInput.addEventListener('change', () => {
-        if (!fileInput.files.length) return;
-        const file = fileInput.files[0];
-        originalName = file.name.substring(0, file.name.lastIndexOf('.')) || 'image';
+            dropZone.addEventListener('click', () => fileInput.click());
 
+      function handleWebpFile(file) {
+        if (!file || !file.type.startsWith('image/')) return;
+        const name = file.name || 'image.png';
+        originalName = name.substring(0, name.lastIndexOf('.')) || 'image';
         const reader = new FileReader();
         reader.onload = (e) => {
           const img = new Image();
@@ -306,6 +306,48 @@
           img.src = e.target.result;
         };
         reader.readAsDataURL(file);
+      }
+
+      ['dragenter', 'dragover'].forEach(evt => {
+        window.addEventListener(evt, (e) => {
+          e.preventDefault();
+          dropZone.style.borderColor = 'var(--primary)';
+          dropZone.style.backgroundColor = 'var(--primary-light)';
+        });
+      });
+      ['dragleave', 'drop'].forEach(evt => {
+        window.addEventListener(evt, (e) => {
+          e.preventDefault();
+          dropZone.style.borderColor = 'var(--border-hover)';
+          dropZone.style.backgroundColor = 'var(--bg-surface)';
+        });
+      });
+      window.addEventListener('drop', (e) => {
+        e.preventDefault();
+        if (e.dataTransfer && e.dataTransfer.files.length) {
+          handleWebpFile(e.dataTransfer.files[0]);
+        }
+      });
+
+      document.addEventListener('paste', (e) => {
+        const items = (e.clipboardData || window.clipboardData)?.items;
+        if (!items) return;
+        for (let item of items) {
+          if (item.type.indexOf('image') !== -1) {
+            const blob = item.getAsFile();
+            if (blob) {
+              handleWebpFile(blob);
+              if (window.OneToolBox && OneToolBox.toast) {
+                OneToolBox.toast('Image pasted from clipboard!');
+              }
+              break;
+            }
+          }
+        }
+      });
+
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) handleWebpFile(fileInput.files[0]);
       });
 
       dlBtn.addEventListener('click', () => {

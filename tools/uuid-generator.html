@@ -234,27 +234,31 @@
 
     <!-- Tool Container -->
     <div class="tool-container">
-      <div style="display: grid; grid-template-columns: 1fr 3fr; gap: var(--space-6);">
+      <div class="tool-grid-3fr">
         <div>
-          <div class="form-group">
-            <label for="uuid-quantity" class="form-label">Quantity</label>
-            <select id="uuid-quantity" class="select-control">
-              <option value="1">1 UUID</option>
-              <option value="5" selected>5 UUIDs</option>
-              <option value="10">10 UUIDs</option>
-              <option value="25">25 UUIDs</option>
-              <option value="50">50 UUIDs</option>
-            </select>
-          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-4);">
+            <div class="form-group" style="margin: 0;">
+              <label for="uuid-quantity" class="form-label">Quantity</label>
+              <select id="uuid-quantity" class="select-control">
+                <option value="1">1 UUID</option>
+                <option value="5" selected>5 UUIDs</option>
+                <option value="10">10 UUIDs</option>
+                <option value="25">25 UUIDs</option>
+                <option value="50">50 UUIDs</option>
+              </select>
+            </div>
 
-          <div class="form-group">
-            <label class="form-label">Format Options</label>
-            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; cursor: pointer; margin-bottom: 8px;">
-              <input type="checkbox" id="chk-uppercase"> Uppercase (A-F)
-            </label>
-            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; cursor: pointer;">
-              <input type="checkbox" id="chk-hyphens" checked> Include Hyphens
-            </label>
+            <div class="form-group" style="margin: 0;">
+              <label class="form-label">Format Options</label>
+              <div style="display: flex; gap: 16px; align-items: center; height: 42px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; cursor: pointer;">
+                  <input type="checkbox" id="chk-uppercase"> Uppercase (A-F)
+                </label>
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.875rem; cursor: pointer;">
+                  <input type="checkbox" id="chk-hyphens" checked> Include Hyphens
+                </label>
+              </div>
+            </div>
           </div>
 
           <button id="btn-gen-uuid" class="btn btn-primary btn-full">Generate UUIDs</button>
@@ -265,7 +269,7 @@
             <label class="form-label" style="margin-bottom: 0;">Generated Result</label>
             <button id="btn-copy-uuid" class="btn btn-secondary btn-sm">Copy All</button>
           </div>
-          <textarea id="uuid-output" class="textarea-control" readonly style="min-height: 220px;"></textarea>
+          <textarea id="uuid-output" class="textarea-control" readonly style="min-height: 200px;"></textarea>
         </div>
       </div>
     </div>

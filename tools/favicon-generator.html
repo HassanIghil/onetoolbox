@@ -220,7 +220,7 @@
     <div class="tool-container">
       <div id="drop-zone" style="border: 2px dashed var(--border-hover); border-radius: var(--radius-lg); padding: var(--space-8); text-align: center; background-color: var(--bg-surface); cursor: pointer;">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto var(--space-3); color: var(--primary);"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        <div style="font-weight: 600; font-size: 1.125rem;">Select logo image for Favicon generation</div>
+        <div style="font-weight: 600; font-size: 1.125rem;">Drag & drop image, click to browse, or paste (Ctrl+V) from clipboard</div>
         <input type="file" id="file-input" accept="image/*" style="display: none;">
       </div>
 
@@ -291,9 +291,10 @@
       const fileInput = document.getElementById('file-input');
       const panel = document.getElementById('result-panel');
 
-      dropZone.addEventListener('click', () => fileInput.click());
-      fileInput.addEventListener('change', () => {
-        if (!fileInput.files.length) return;
+            dropZone.addEventListener('click', () => fileInput.click());
+
+      function handleFaviconFile(file) {
+        if (!file || !file.type.startsWith('image/')) return;
         const reader = new FileReader();
         reader.onload = (e) => {
           const img = new Image();
@@ -305,7 +306,49 @@
           };
           img.src = e.target.result;
         };
-        reader.readAsDataURL(fileInput.files[0]);
+        reader.readAsDataURL(file);
+      }
+
+      ['dragenter', 'dragover'].forEach(evt => {
+        window.addEventListener(evt, (e) => {
+          e.preventDefault();
+          dropZone.style.borderColor = 'var(--primary)';
+          dropZone.style.backgroundColor = 'var(--primary-light)';
+        });
+      });
+      ['dragleave', 'drop'].forEach(evt => {
+        window.addEventListener(evt, (e) => {
+          e.preventDefault();
+          dropZone.style.borderColor = 'var(--border-hover)';
+          dropZone.style.backgroundColor = 'var(--bg-surface)';
+        });
+      });
+      window.addEventListener('drop', (e) => {
+        e.preventDefault();
+        if (e.dataTransfer && e.dataTransfer.files.length) {
+          handleFaviconFile(e.dataTransfer.files[0]);
+        }
+      });
+
+      document.addEventListener('paste', (e) => {
+        const items = (e.clipboardData || window.clipboardData)?.items;
+        if (!items) return;
+        for (let item of items) {
+          if (item.type.indexOf('image') !== -1) {
+            const blob = item.getAsFile();
+            if (blob) {
+              handleFaviconFile(blob);
+              if (window.OneToolBox && OneToolBox.toast) {
+                OneToolBox.toast('Image pasted from clipboard!');
+              }
+              break;
+            }
+          }
+        }
+      });
+
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files.length) handleFaviconFile(fileInput.files[0]);
       });
 
       function generateSize(img, size, imgId, dlId) {

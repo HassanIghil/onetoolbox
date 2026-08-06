@@ -229,13 +229,13 @@
       <div id="drop-zone" style="border: 2px dashed var(--border-hover); border-radius: var(--radius-lg); padding: var(--space-8); text-align: center; background-color: var(--bg-surface); cursor: pointer; transition: all var(--transition-fast);">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto var(--space-3); color: var(--primary);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
         <div style="font-weight: 600; font-size: 1.125rem; margin-bottom: 4px;">Drag & Drop image file here</div>
-        <div style="font-size: 0.875rem; color: var(--text-muted);">or click to browse from computer (PNG, JPG, WebP)</div>
+        <div style="font-size: 0.875rem; color: var(--text-muted);">or click to browse, or paste (Ctrl+V) from clipboard (PNG, JPG, WebP)</div>
         <input type="file" id="file-input" accept="image/png, image/jpeg, image/webp" style="display: none;">
       </div>
 
       <!-- Settings & Results (Hidden until file uploaded) -->
       <div id="compression-panel" style="display: none; margin-top: var(--space-6);">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6);">
+        <div class="tool-grid-2col">
           <div>
             <div class="form-group">
               <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
@@ -254,9 +254,9 @@
             <button id="btn-download-comp" class="btn btn-primary btn-full">Download Compressed Image</button>
           </div>
 
-          <div style="text-align: center;">
-            <div class="form-label" style="margin-bottom: 8px;">Compressed Image Preview</div>
-            <img id="img-preview" style="max-height: 220px; border-radius: var(--radius-md); border: 1px solid var(--border-color); object-fit: contain;" alt="Compressed preview">
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background-color: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-6);">
+            <div class="form-label" style="margin-bottom: 12px; width: 100%;">Compressed Image Preview</div>
+            <img id="img-preview" style="max-height: 280px; width: auto; max-width: 100%; margin: 0 auto; border-radius: var(--radius-md); border: 1px solid var(--border-color); object-fit: contain;" alt="Compressed preview">
           </div>
         </div>
       </div>
@@ -361,13 +361,48 @@
       let compressedBlob = null;
 
       dropZone.addEventListener('click', () => fileInput.click());
-      dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.style.borderColor = 'var(--primary)'; });
-      dropZone.addEventListener('dragleave', () => { dropZone.style.borderColor = 'var(--border-hover)'; });
-      dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.style.borderColor = 'var(--border-hover)';
-        if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+
+      // Full Drag and Drop support
+      ['dragenter', 'dragover'].forEach(evt => {
+        window.addEventListener(evt, (e) => {
+          e.preventDefault();
+          dropZone.style.borderColor = 'var(--primary)';
+          dropZone.style.backgroundColor = 'var(--primary-light)';
+        });
       });
+      ['dragleave', 'drop'].forEach(evt => {
+        window.addEventListener(evt, (e) => {
+          e.preventDefault();
+          dropZone.style.borderColor = 'var(--border-hover)';
+          dropZone.style.backgroundColor = 'var(--bg-surface)';
+        });
+      });
+      window.addEventListener('drop', (e) => {
+        e.preventDefault();
+        if (e.dataTransfer && e.dataTransfer.files.length) {
+          const file = e.dataTransfer.files[0];
+          if (file.type.startsWith('image/')) handleFile(file);
+        }
+      });
+
+      // Ctrl + V Clipboard Paste support
+      document.addEventListener('paste', (e) => {
+        const items = (e.clipboardData || window.clipboardData)?.items;
+        if (!items) return;
+        for (let item of items) {
+          if (item.type.indexOf('image') !== -1) {
+            const blob = item.getAsFile();
+            if (blob) {
+              handleFile(blob);
+              if (window.OneToolBox && OneToolBox.toast) {
+                OneToolBox.toast('Image pasted from clipboard!');
+              }
+              break;
+            }
+          }
+        }
+      });
+
       fileInput.addEventListener('change', () => { if (fileInput.files.length) handleFile(fileInput.files[0]); });
 
       function formatBytes(bytes) {
