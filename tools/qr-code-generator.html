@@ -366,7 +366,7 @@
 
       function updateQR() {
         holder.innerHTML = '';
-        const canvas = document.createElement('canvas');
+        const rawCanvas = document.createElement('canvas');
         if (window.QrCreator) {
           QrCreator.render({
             text: qrText.value || 'https://onetoolbox.dev',
@@ -375,9 +375,24 @@
             fill: fgColor.value,
             background: bgColor.value,
             size: 200
-          }, canvas);
+          }, rawCanvas);
+        } else {
+          rawCanvas.width = 200;
+          rawCanvas.height = 200;
         }
-        holder.appendChild(canvas);
+
+        // Add 3px outer margin around QR code
+        const margin = 3;
+        const paddedCanvas = document.createElement('canvas');
+        paddedCanvas.width = rawCanvas.width + (margin * 2);
+        paddedCanvas.height = rawCanvas.height + (margin * 2);
+
+        const ctx = paddedCanvas.getContext('2d');
+        ctx.fillStyle = bgColor.value || '#ffffff';
+        ctx.fillRect(0, 0, paddedCanvas.width, paddedCanvas.height);
+        ctx.drawImage(rawCanvas, margin, margin);
+
+        holder.appendChild(paddedCanvas);
       }
 
       genBtn.addEventListener('click', updateQR);
