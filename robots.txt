@@ -1,5 +1,15 @@
 User-agent: *
 Allow: /
+Allow: /favicon*
+Allow: /apple-touch-icon.png
+Allow: /android-chrome*
+Allow: /site.webmanifest
 Allow: /llms.txt
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
 
 Sitemap: https://onetoolbox.dev/sitemap.xml
