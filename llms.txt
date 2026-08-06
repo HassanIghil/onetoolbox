@@ -1,0 +1,45 @@
+# OneToolBox — Free Online Browser Utilities
+
+> OneToolBox (https://onetoolbox.com) is a 100% private, client-side suite of online web utilities for developers, designers, creators, and professionals. All processing happens locally in the user's browser with zero server uploads, zero logs, and zero tracking.
+
+## Core Features & Privacy Model
+- 100% Client-Side Computation: Powered by native Web Cryptography API, HTML5 Canvas, and modern ES6 JavaScript.
+- Zero Server Data Collection: Files, images, JSON payloads, and text never leave the user's browser.
+- Instant Zero Latency: Operates offline after initial page load without network round-trips.
+- Completely Free: No user registration, no account creation, no sign-up, and no watermarks.
+
+## Tool Directory by Category
+
+### Developer Tools
+- JSON Viewer (/tools/json-viewer.html): Interactive collapsible tree view inspector and syntax highlighter for complex nested JSON.
+- JSON Formatter (/tools/json-formatter.html): Beautify, format, validate, and minify JSON with custom 2-space, 4-space, or tab indentation.
+- UUID Generator (/tools/uuid-generator.html): Generate cryptographically secure Version 4 UUIDs (GUIDs) in bulk.
+- HTML Encoder (/tools/html-encoder.html): Convert special characters (&, <, >) to HTML entities and unescape markup safely.
+- CSS Minifier (/tools/css-minifier.html): Compress stylesheet payload sizes by stripping comments and whitespace.
+- JS Minifier (/tools/js-minifier.html): Compress JavaScript code payload sizes for production deployment.
+
+### Image Tools
+- Image Compressor (/tools/image-compressor.html): 100% private browser HTML5 Canvas image optimization for PNG, JPG, and WebP.
+- WebP Converter (/tools/webp-converter.html): Convert PNG and JPG photos to next-gen Google WebP image format.
+- PNG to JPG (/tools/png-to-jpg.html): Convert transparent PNG graphics to JPG standard format with custom background fill colors.
+- JPG to PNG (/tools/jpg-to-png.html): Convert lossy JPEG photos to lossless PNG graphics.
+- Favicon Generator (/tools/favicon-generator.html): Convert any logo or picture into multi-size favicons (16x16, 32x32, Apple Touch, PWA app icons).
+
+### Text Utilities
+- Markdown Previewer (/tools/markdown-preview.html): Live side-by-side GitHub Flavored Markdown (GFM) editor and HTML converter.
+- Base64 Encoder (/tools/base64-encoder.html): Convert plain text into standard or URL-safe Base64 strings.
+- Base64 Decoder (/tools/base64-decoder.html): Decode Base64 encoded strings back into plain UTF-8 text with auto-validation.
+
+### Calculators & Converters
+- Age Calculator (/tools/age-calculator.html): Compute exact age down to minutes, total days lived, and next birthday countdown.
+- Password Generator (/tools/password-generator.html): CSPRNG hardware-random password creator with customizable rules and entropy meter.
+- Timestamp Converter (/tools/timestamp-converter.html): Convert Unix epoch timestamps (seconds/ms) to UTC/local dates and ISO strings.
+
+### Social Media Tools
+- YouTube Thumbnail Downloader (/tools/youtube-thumbnail-downloader.html): Extract 4K (1080p), HD (720p), and SD YouTube video cover images.
+- QR Code Generator (/tools/qr-code-generator.html): Generate custom vector & PNG QR codes for website URLs, text, and Wi-Fi.
+
+## Canonical Domain & Sitemap
+- Primary Website: https://onetoolbox.com/
+- Sitemap XML: https://onetoolbox.com/sitemap.xml
+- Robots Directives: https://onetoolbox.com/robots.txt
