@@ -1058,3 +1058,190 @@ kbd {
   display: inline-block;
   vertical-align: middle;
 }
+
+/* ==========================================================================
+   Comprehensive Mobile Responsiveness (< 576px, < 480px, Huawei P20 360px)
+   ========================================================================== */
+
+@media (max-width: 576px) {
+  .container {
+    padding-left: var(--space-3);
+    padding-right: var(--space-3);
+  }
+
+  .header-inner {
+    padding: var(--space-3) 0;
+  }
+
+  .brand-logo {
+    font-size: 1rem;
+    gap: 8px;
+  }
+
+  .brand-img-logo {
+    width: 24px;
+    height: 24px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .icon-btn, .header-search-btn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .hero-section {
+    padding: var(--space-8) 0 var(--space-6);
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+    line-height: 1.2;
+    margin-bottom: var(--space-3);
+  }
+
+  .hero-subtitle {
+    font-size: 0.9375rem;
+    margin-bottom: var(--space-5);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-2);
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .trust-bar {
+    gap: 10px 16px;
+    font-size: 0.8125rem;
+  }
+
+  .section-header {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--space-4);
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .grid-categories {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .category-card {
+    padding: 12px 10px;
+    border-radius: var(--radius-md);
+  }
+
+  .category-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .category-title {
+    font-size: 0.875rem;
+  }
+
+  .category-count {
+    font-size: 0.75rem;
+  }
+
+  .grid-tools {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .tool-card {
+    padding: 14px;
+  }
+
+  .tool-card-desc {
+    font-size: 0.8125rem;
+    margin-bottom: 12px;
+  }
+
+  .tool-card-footer {
+    padding-top: 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .why-card {
+    padding: 16px;
+  }
+
+  .tool-container {
+    padding: 14px;
+  }
+
+  .tool-actions-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .tool-actions-bar .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .brand-logo span {
+    font-size: 0.9375rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .grid-categories {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .category-card {
+    padding: 10px 8px;
+  }
+
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.8125rem;
+  }
+}
+
