@@ -1,8 +1,9 @@
-# Local Agent & IDE files
+# Local Agent, Temp & Scratch files
 .agents/
 .antigravityignore
 .vscode/
 .idea/
+scratch/
 onetoolbox.dev-audit/
 *-audit/
 graphify-out/
@@ -12,6 +13,10 @@ keyword_clusters.json
 missing_tools.json
 seo_opportunities.json
 seo_roadmap.md
+__pycache__/
+*.pyc
+*.tmp
+*.bak
 
 # Dependencies & Build output
 node_modules/
