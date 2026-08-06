@@ -5,6 +5,14 @@
 .idea/
 onetoolbox.dev-audit/
 *-audit/
+graphify-out/
+search results/
+competitor_analysis.json
+keyword_clusters.json
+missing_tools.json
+seo_opportunities.json
+seo_roadmap.md
+
 # Dependencies & Build output
 node_modules/
 dist/

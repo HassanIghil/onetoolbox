@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function() {
+      var t = localStorage.getItem('onetoolbox_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+      if (t === 'dark') {
+        document.documentElement.style.backgroundColor = '#0b0f17';
+        document.documentElement.style.color = '#f3f4f6';
+      } else {
+        document.documentElement.style.backgroundColor = '#ffffff';
+        document.documentElement.style.color = '#111827';
+      }
+    })();
+  </script>
+  <style>
+    html[data-theme="dark"] { background-color: #0b0f17 !important; color: #f3f4f6 !important; }
+    html[data-theme="light"] { background-color: #ffffff !important; color: #111827 !important; }
+    #page-preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 200ms ease, visibility 200ms ease;
+    }
+    html[data-theme="dark"] #page-preloader { background-color: #0b0f17; }
+    html[data-theme="light"] #page-preloader { background-color: #ffffff; }
+    #page-preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid rgba(16, 185, 129, 0.2);
+      border-top-color: #10b981;
+      border-radius: 50%;
+      animation: preloader-spin 0.5s linear infinite;
+    }
+    @keyframes preloader-spin { to { transform: rotate(360deg); } }
+    .color-card-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      margin-bottom: 10px;
+    }
+    .color-swatch-display {
+      width: 100%;
+      height: 140px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: background-color 0.15s ease;
+    }
+    .shade-box {
+      height: 40px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      transition: transform 0.1s ease;
+    }
+    .shade-box:hover {
+      transform: scale(1.05);
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>Color Format Converter — HEX, RGB, HSL, CMYK &amp; Picker | OneToolBox</title>
+  <meta name="description" content="Free online color converter and picker. Convert HEX to RGB, HSL, HSV, CMYK and CSS color formats instantly. Generate color tints and shades. 100% private.">
+  <meta name="keywords" content="hex to rgb, color converter, rgb to hex, hex to hsl, color picker online, cmyk converter, color palette generator, css color codes">
+  <link rel="canonical" href="https://onetoolbox.dev/tools/color-converter">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onetoolbox.dev/tools/color-converter">
+  <meta property="og:title" content="Color Format Converter — HEX, RGB, HSL, CMYK & Picker | OneToolBox">
+  <meta property="og:description" content="Free online color converter and picker. Convert HEX to RGB, HSL, HSV, CMYK and CSS color formats instantly. Generate color tints and shades. 100% private.">
+  <meta property="og:image" content="https://onetoolbox.dev/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://onetoolbox.dev/tools/color-converter">
+  <meta name="twitter:title" content="Color Format Converter — HEX, RGB, HSL, CMYK & Picker | OneToolBox">
+  <meta name="twitter:description" content="Free online color converter and picker. Convert HEX to RGB, HSL, HSV, CMYK and CSS color formats instantly. Generate color tints and shades. 100% private.">
+  <meta name="twitter:image" content="https://onetoolbox.dev/og-image.png">
+
+  <!-- Preconnect & Non-blocking Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/main.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Color Format Converter & Picker",
+        "url": "https://onetoolbox.dev/tools/color-converter",
+        "description": "Free online color converter. Convert HEX, RGB, HSL, HSV, and CMYK color codes instantly with color picker and palette generator.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "OneToolBox",
+          "url": "https://onetoolbox.dev",
+          "logo": "https://onetoolbox.dev/apple-touch-icon.png"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Color Converter",
+        "url": "https://onetoolbox.dev/tools/color-converter",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://onetoolbox.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Developer Tools",
+            "item": "https://onetoolbox.dev/categories/developer-tools.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Color Converter",
+            "item": "https://onetoolbox.dev/tools/color-converter"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I convert HEX to RGB?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Type or paste any 6-digit hex color code (e.g. #10B981) into the input box. The tool automatically converts it to RGB (16, 185, 129), HSL, HSV, and CMYK formats."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between RGB and HSL?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "RGB defines colors by Red, Green, and Blue intensity (0-255). HSL defines colors by Hue (0-360°), Saturation (0-100%), and Lightness (0-100%), making HSL more intuitive for human color adjustments."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Page Preloader -->
+  <div id="page-preloader" aria-hidden="true">
+    <div class="preloader-spinner"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="brand-logo">
+          <img src="/apple-touch-icon.png" alt="OneToolBox Logo" class="brand-img-logo" width="28" height="28">
+          <span>OneToolBox</span>
+        </a>
+
+        <button class="header-search-btn trigger-search" aria-label="Search tools">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search tools...</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/categories/index.html" class="nav-link">Categories</a></li>
+            <li><a href="/about.html" class="nav-link">About</a></li>
+            <li><a href="/contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+          <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Toggle navigation menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Nav -->
+  <div id="mobile-nav" class="mobile-nav">
+    <ul class="mobile-nav-list">
+      <li><a href="/categories/index.html" class="mobile-nav-link">Categories</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="/privacy.html" class="mobile-nav-link">Privacy Policy</a></li>
+      <li><a href="/terms.html" class="mobile-nav-link">Terms of Service</a></li>
+    </ul>
+  </div>
+
+  <main class="main-content container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/categories/developer-tools.html">Developer Tools</a> &rsaquo; <span>Color Converter</span>
+    </div>
+
+    <div class="tool-header-wrapper">
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+        <span class="badge badge-primary">Developer Tools</span>
+        <span class="badge badge-muted">Color</span>
+      </div>
+      <h1 class="page-title">Color Format Converter</h1>
+      <p class="page-subtitle">Convert HEX, RGB, HSL, HSV, and CMYK color codes instantly with color preview and palette generator.</p>
+    </div>
+
+    <!-- Tool Container -->
+    <div class="tool-container">
+      <div class="tool-grid-2col" style="margin-bottom: var(--space-6);">
+        <!-- Input & Preview -->
+        <div>
+          <div class="form-group">
+            <label for="color-picker" class="form-label">Pick Color</label>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <input type="color" id="color-picker" value="#10b981" style="width: 60px; height: 42px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer; padding: 2px; background: none;">
+              <input type="text" id="color-hex-input" class="input-control" value="#10b981" style="font-family: 'JetBrains Mono', monospace; font-size: 1rem;" placeholder="#10B981">
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 16px;">
+            <button id="btn-random" class="btn btn-secondary btn-sm">Random Color</button>
+            <button id="btn-sample-brand" class="btn btn-secondary btn-sm">Brand Emerald (#10B981)</button>
+          </div>
+        </div>
+
+        <!-- Color Swatch & Contrast Info -->
+        <div>
+          <div id="swatch-display" class="color-swatch-display" style="background-color: #10b981; color: #ffffff;">
+            #10B981
+          </div>
+          <div style="margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); text-align: center;" id="contrast-info">
+            Text Contrast: White (#ffffff) readable
+          </div>
+        </div>
+      </div>
+
+      <!-- Converted Formats list -->
+      <div style="margin-bottom: var(--space-6);">
+        <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; color: var(--text-secondary);">Converted Color Formats</div>
+
+        <div class="color-card-row">
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">HEX</div>
+            <div id="val-hex" style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">#10B981</div>
+          </div>
+          <button class="btn btn-secondary btn-sm btn-copy-fmt" data-target="val-hex">Copy HEX</button>
+        </div>
+
+        <div class="color-card-row">
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">RGB</div>
+            <div id="val-rgb" style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">rgb(16, 185, 129)</div>
+          </div>
+          <button class="btn btn-secondary btn-sm btn-copy-fmt" data-target="val-rgb">Copy RGB</button>
+        </div>
+
+        <div class="color-card-row">
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">HSL</div>
+            <div id="val-hsl" style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">hsl(160, 84%, 39%)</div>
+          </div>
+          <button class="btn btn-secondary btn-sm btn-copy-fmt" data-target="val-hsl">Copy HSL</button>
+        </div>
+
+        <div class="color-card-row">
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">HSV / HSB</div>
+            <div id="val-hsv" style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">hsv(160, 91%, 73%)</div>
+          </div>
+          <button class="btn btn-secondary btn-sm btn-copy-fmt" data-target="val-hsv">Copy HSV</button>
+        </div>
+
+        <div class="color-card-row">
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--text-muted);">CMYK</div>
+            <div id="val-cmyk" style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">cmyk(91%, 0%, 30%, 27%)</div>
+          </div>
+          <button class="btn btn-secondary btn-sm btn-copy-fmt" data-target="val-cmyk">Copy CMYK</button>
+        </div>
+      </div>
+
+      <!-- Color Tints & Shades -->
+      <div>
+        <div style="font-size: 0.9rem; font-weight: 600; margin-bottom: 12px; color: var(--text-secondary);">Tints &amp; Shades Palette</div>
+        <div id="shades-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 8px;"></div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <section style="margin-top: var(--space-10); margin-bottom: var(--space-10);">
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">What is a Color Format Converter?</h2>
+      <div class="why-card" style="margin-bottom: var(--space-6);">
+        <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">
+          A Color Converter translates color representations between graphic and web formats including HEX, RGB, HSL, HSV, and CMYK. Front-end developers use HSL for CSS variable styling, designers use HEX for UI mockups, and print production uses CMYK color codes.
+        </p>
+      </div>
+
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">RGB vs HSL vs HEX</h2>
+      <div class="why-grid" style="margin-bottom: var(--space-8);">
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">HEX (#RRGGBB)</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Base-16 hexadecimal notation used universally in web stylesheets.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">RGB (r, g, b)</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Additive color model based on Red, Green, and Blue intensity (0-255).</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">HSL (h, s%, l%)</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Human-friendly Hue, Saturation, and Lightness scale ideal for theme design.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="margin-bottom: var(--space-10);">
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">How do I convert HEX to RGB?</button>
+          <div class="faq-answer">Type or paste any 6-digit hex color code (e.g. #10B981) into the input box. The tool automatically converts it to RGB (16, 185, 129), HSL, HSV, and CMYK formats.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What is the difference between RGB and HSL?</button>
+          <div class="faq-answer">RGB defines colors by Red, Green, and Blue intensity (0-255). HSL defines colors by Hue (0-360°), Saturation (0-100%), and Lightness (0-100%), making HSL more intuitive for human color adjustments.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <span>&copy; 2026 OneToolBox. All rights reserved.</span>
+        <a href="/" class="section-link">&larr; Back to Homepage</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/tools-manager.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const colorPicker = document.getElementById('color-picker');
+      const hexInput = document.getElementById('color-hex-input');
+      const swatchDisplay = document.getElementById('swatch-display');
+      const contrastInfo = document.getElementById('contrast-info');
+      const shadesContainer = document.getElementById('shades-container');
+
+      const valHex = document.getElementById('val-hex');
+      const valRgb = document.getElementById('val-rgb');
+      const valHsl = document.getElementById('val-hsl');
+      const valHsv = document.getElementById('val-hsv');
+      const valCmyk = document.getElementById('val-cmyk');
+
+      const btnRandom = document.getElementById('btn-random');
+      const btnBrand = document.getElementById('btn-sample-brand');
+
+      function hexToRgb(hex) {
+        let cleanHex = hex.replace(/^#/, '');
+        if (cleanHex.length === 3) {
+          cleanHex = cleanHex.split('').map(c => c + c).join('');
+        }
+        if (cleanHex.length !== 6) return null;
+        const num = parseInt(cleanHex, 16);
+        return {
+          r: (num >> 16) & 255,
+          g: (num >> 8) & 255,
+          b: num & 255
+        };
+      }
+
+      function rgbToHex(r, g, b) {
+        return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('').toUpperCase();
+      }
+
+      function rgbToHsl(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+
+        if (max === min) {
+          h = s = 0;
+        } else {
+          const d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+          }
+          h /= 6;
+        }
+        return {
+          h: Math.round(h * 360),
+          s: Math.round(s * 100),
+          l: Math.round(l * 100)
+        };
+      }
+
+      function rgbToHsv(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        let h, s, v = max;
+        const d = max - min;
+        s = max === 0 ? 0 : d / max;
+
+        if (max === min) {
+          h = 0;
+        } else {
+          switch (max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+          }
+          h /= 6;
+        }
+        return {
+          h: Math.round(h * 360),
+          s: Math.round(s * 100),
+          v: Math.round(v * 100)
+        };
+      }
+
+      function rgbToCmyk(r, g, b) {
+        let c = 1 - (r / 255);
+        let m = 1 - (g / 255);
+        let y = 1 - (b / 255);
+        let k = Math.min(c, Math.min(m, y));
+
+        if (k === 1) return { c: 0, m: 0, y: 0, k: 100 };
+
+        c = Math.round(((c - k) / (1 - k)) * 100);
+        m = Math.round(((m - k) / (1 - k)) * 100);
+        y = Math.round(((y - k) / (1 - k)) * 100);
+        k = Math.round(k * 100);
+
+        return { c, m, y, k };
+      }
+
+      function updateColor(hex) {
+        const rgb = hexToRgb(hex);
+        if (!rgb) return;
+
+        const fullHex = rgbToHex(rgb.r, rgb.g, rgb.b);
+        const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+        const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+        const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
+
+        colorPicker.value = fullHex;
+        hexInput.value = fullHex;
+
+        swatchDisplay.style.backgroundColor = fullHex;
+        swatchDisplay.textContent = fullHex;
+
+        // Contrast check (relative luminance)
+        const luminance = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
+        const textColor = luminance > 0.5 ? '#000000' : '#ffffff';
+        swatchDisplay.style.color = textColor;
+        contrastInfo.textContent = `Text Contrast: Best with ${textColor === '#ffffff' ? 'White (#FFFFFF)' : 'Dark (#000000)'} text`;
+
+        // Update format strings
+        valHex.textContent = fullHex;
+        valRgb.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+        valHsl.textContent = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+        valHsv.textContent = `hsv(${hsv.h}, ${hsv.s}%, ${hsv.v}%)`;
+        valCmyk.textContent = `cmyk(${cmyk.c}%, ${cmyk.m}%, ${cmyk.y}%, ${cmyk.k}%)`;
+
+        // Render Shades / Tints palette
+        let shadesHtml = '';
+        const lightnessSteps = [10, 25, 40, 50, 65, 80, 90];
+        lightnessSteps.forEach(l => {
+          const shadeRgb = hslToRgb(hsl.h / 360, hsl.s / 100, l / 100);
+          const shadeHex = rgbToHex(shadeRgb.r, shadeRgb.g, shadeRgb.b);
+          const txtCol = l > 55 ? '#000000' : '#ffffff';
+          shadesHtml += `<div class="shade-box" style="background-color: ${shadeHex}; color: ${txtCol};" data-hex="${shadeHex}">${shadeHex}</div>`;
+        });
+        shadesContainer.innerHTML = shadesHtml;
+
+        // Click to copy shade
+        document.querySelectorAll('.shade-box').forEach(box => {
+          box.addEventListener('click', () => {
+            const h = box.getAttribute('data-hex');
+            updateColor(h);
+            OneToolBox.toast(`Selected shade ${h}!`);
+          });
+        });
+      }
+
+      function hslToRgb(h, s, l) {
+        let r, g, b;
+        if (s === 0) {
+          r = g = b = l;
+        } else {
+          const hue2rgb = (p, q, t) => {
+            if (t < 0) t += 1;
+            if (t > 1) t -= 1;
+            if (t < 1/6) return p + (q - p) * 6 * t;
+            if (t < 1/2) return q;
+            if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+          };
+          const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+          const p = 2 * l - q;
+          r = hue2rgb(p, q, h + 1/3);
+          g = hue2rgb(p, q, h);
+          b = hue2rgb(p, q, h - 1/3);
+        }
+        return { r: Math.round(r * 255), g: Math.round(g * 255), b: Math.round(b * 255) };
+      }
+
+      // Input listeners
+      colorPicker.addEventListener('input', (e) => updateColor(e.target.value));
+      hexInput.addEventListener('input', (e) => updateColor(e.target.value));
+
+      btnRandom.addEventListener('click', () => {
+        const randHex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0').toUpperCase();
+        updateColor(randHex);
+        OneToolBox.toast('Random color generated!');
+      });
+
+      btnBrand.addEventListener('click', () => {
+        updateColor('#10B981');
+      });
+
+      document.querySelectorAll('.btn-copy-fmt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          const el = document.getElementById(targetId);
+          if (el) {
+            navigator.clipboard.writeText(el.textContent);
+            OneToolBox.toast(`Copied ${el.textContent}!`);
+          }
+        });
+      });
+
+      // Initial color
+      updateColor('#10B981');
+    });
+  </script>
+</body>
+</html>

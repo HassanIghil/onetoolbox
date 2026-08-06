@@ -17,6 +17,11 @@
 - HTML Encoder (/tools/html-encoder.html): Convert special characters (&, <, >) to HTML entities and unescape markup safely.
 - CSS Minifier (/tools/css-minifier.html): Compress stylesheet payload sizes by stripping comments and whitespace.
 - JS Minifier (/tools/js-minifier.html): Compress JavaScript code payload sizes for production deployment.
+- YAML Validator (/tools/yaml-validator.html): Validate, parse, and convert YAML to JSON with real-time error reporting and line-level error diagnostics.
+- SVG Optimizer (/tools/svg-optimizer.html): Clean, compress, and minify SVG vector code by removing metadata, comments, and whitespace.
+- Hash Generator (/tools/hash-generator.html): Compute MD5, SHA-1, SHA-256, SHA-384, and SHA-512 cryptographic hashes for text and files via Web Cryptography API.
+- Text Diff (/tools/text-diff.html): Compare two text files or code snippets side-by-side to highlight additions, deletions, and modifications line by line.
+- Color Converter (/tools/color-converter.html): Convert HEX, RGB, HSL, HSV, and CMYK color codes with color picker, contrast check, and palette generator.
 
 ### Image Tools
 - Image Compressor (/tools/image-compressor.html): 100% private browser HTML5 Canvas image optimization for PNG, JPG, and WebP.
@@ -24,6 +29,7 @@
 - PNG to JPG (/tools/png-to-jpg.html): Convert transparent PNG graphics to JPG standard format with custom background fill colors.
 - JPG to PNG (/tools/jpg-to-png.html): Convert lossy JPEG photos to lossless PNG graphics.
 - Favicon Generator (/tools/favicon-generator.html): Convert any logo or picture into multi-size favicons (16x16, 32x32, Apple Touch, PWA app icons).
+- Image Resizer (/tools/image-resizer.html): Resize PNG, JPG, and WebP images by width, height, or percentage client-side.
 
 ### Text Utilities
 - Markdown Previewer (/tools/markdown-preview.html): Live side-by-side GitHub Flavored Markdown (GFM) editor and HTML converter.

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function() {
+      var t = localStorage.getItem('onetoolbox_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+      if (t === 'dark') {
+        document.documentElement.style.backgroundColor = '#0b0f17';
+        document.documentElement.style.color = '#f3f4f6';
+      } else {
+        document.documentElement.style.backgroundColor = '#ffffff';
+        document.documentElement.style.color = '#111827';
+      }
+    })();
+  </script>
+  <style>
+    html[data-theme="dark"] { background-color: #0b0f17 !important; color: #f3f4f6 !important; }
+    html[data-theme="light"] { background-color: #ffffff !important; color: #111827 !important; }
+    #page-preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 200ms ease, visibility 200ms ease;
+    }
+    html[data-theme="dark"] #page-preloader { background-color: #0b0f17; }
+    html[data-theme="light"] #page-preloader { background-color: #ffffff; }
+    #page-preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid rgba(16, 185, 129, 0.2);
+      border-top-color: #10b981;
+      border-radius: 50%;
+      animation: preloader-spin 0.5s linear infinite;
+    }
+    @keyframes preloader-spin { to { transform: rotate(360deg); } }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>YAML Validator Online — Validate, Format & Convert YAML Instantly | OneToolBox</title>
+  <meta name="description" content="Free online YAML validator, formatter and syntax checker. Parse, validate, format, and convert YAML to JSON instantly in your browser. 100% private, fast, and no registration.">
+  <meta name="keywords" content="yaml validator, yaml syntax checker, validate yaml online, yaml formatter, format yaml, yaml to json, yaml parser, yaml linter, check yaml file, kubernetes yaml validator, docker compose validator">
+  <link rel="canonical" href="https://onetoolbox.dev/tools/yaml-validator">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Open Graph / Facebook / LinkedIn Social Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onetoolbox.dev/tools/yaml-validator">
+  <meta property="og:title" content="YAML Validator Online — Validate, Format & Convert YAML Instantly | OneToolBox">
+  <meta property="og:description" content="Free online YAML validator, formatter and syntax checker. Parse, validate, format, and convert YAML to JSON instantly in your browser. 100% private, fast, and no registration.">
+  <meta property="og:site_name" content="OneToolBox">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://onetoolbox.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="YAML Validator Online — Validate, Format & Convert YAML Instantly — OneToolBox Free Online Browser Tool">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://onetoolbox.dev/tools/yaml-validator">
+  <meta name="twitter:title" content="YAML Validator Online — Validate, Format & Convert YAML Instantly | OneToolBox">
+  <meta name="twitter:description" content="Free online YAML validator, formatter and syntax checker. Parse, validate, format, and convert YAML to JSON instantly in your browser. 100% private, fast, and no registration.">
+  <meta name="twitter:image" content="https://onetoolbox.dev/og-image.png">
+  <meta name="twitter:image:alt" content="YAML Validator Online — Validate, Format & Convert YAML Instantly — OneToolBox Free Online Browser Tool">
+
+  <!-- Preconnect & Non-blocking Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/main.min.css">
+
+  <!-- Schema.org JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "YAML Validator Online",
+        "url": "https://onetoolbox.dev/tools/yaml-validator",
+        "description": "Free online YAML validator, formatter and syntax checker. Parse, validate, format, and convert YAML to JSON instantly in your browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "OneToolBox",
+          "url": "https://onetoolbox.dev",
+          "logo": "https://onetoolbox.dev/apple-touch-icon.png"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "name": "YAML Validator",
+        "url": "https://onetoolbox.dev/tools/yaml-validator",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://onetoolbox.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Developer Tools",
+            "item": "https://onetoolbox.dev/categories/developer-tools.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "YAML Validator",
+            "item": "https://onetoolbox.dev/tools/yaml-validator"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I validate a YAML file?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Upload or drag & drop your .yaml or .yml file into the OneToolBox YAML Validator, or paste your code directly into the editor. Click 'Validate YAML' to instantly parse and check syntax. Any errors will be highlighted with line and column numbers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I check YAML syntax errors?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Paste your YAML into the validator and click 'Validate YAML' or enable 'Real-time validation'. The parser flags syntax errors such as bad indentation, missing colons, or invalid key-value mappings, indicating the exact line number."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can YAML Validator work with Kubernetes files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes! You can validate Kubernetes manifests, Docker Compose files, Ansible playbooks, GitHub Actions workflows, and any standard YAML file."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this YAML validator upload my files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. OneToolBox processes everything 100% client-side in your browser using JavaScript. Your YAML files and data never leave your device — zero bytes are sent to any server."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is YAML used for?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "YAML (YAML Ain't Markup Language) is a human-readable data serialization standard commonly used for configuration files (Docker, Kubernetes, Ansible, CI/CD pipelines), data exchange between languages, and settings storage in applications."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I convert YAML to JSON?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. After validating your YAML, click 'Convert to JSON' to generate equivalent JSON output. You can copy the converted JSON to your clipboard or download it as a .json file."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "OneToolBox",
+    "url": "https://onetoolbox.dev",
+    "logo": "https://onetoolbox.dev/apple-touch-icon.png",
+    "sameAs": []
+  }
+  </script>
+
+</head>
+<body>
+  <!-- Page Preloader -->
+  <div id="page-preloader" aria-hidden="true">
+    <div class="preloader-spinner"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="brand-logo">
+          <img src="/apple-touch-icon.png" alt="OneToolBox Logo" class="brand-img-logo" width="28" height="28">
+          <span>OneToolBox</span>
+        </a>
+
+        <button class="header-search-btn trigger-search" aria-label="Search tools">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search tools...</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/categories/index.html" class="nav-link">Categories</a></li>
+            <li><a href="/about.html" class="nav-link">About</a></li>
+            <li><a href="/contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+          <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Toggle navigation menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Mobile Drawer Nav -->
+  <div id="mobile-nav" class="mobile-nav">
+    <ul class="mobile-nav-list">
+      <li><a href="/categories/index.html" class="mobile-nav-link">Categories</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="/privacy.html" class="mobile-nav-link">Privacy Policy</a></li>
+      <li><a href="/terms.html" class="mobile-nav-link">Terms of Service</a></li>
+    </ul>
+  </div>
+
+  <main class="main-content container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/categories/developer-tools.html">Developer Tools</a> &rsaquo; <span>YAML Validator</span>
+    </div>
+
+    <div class="tool-header-wrapper">
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+        <span class="badge badge-primary">Developer Tools</span>
+        <span class="badge badge-muted">Validator</span>
+      </div>
+      <h1 class="page-title">YAML Validator Online</h1>
+      <p class="page-subtitle">Validate, format, and convert YAML to JSON instantly. 100% client-side — your data never leaves your browser.</p>
+    </div>
+
+    <!-- Trust Badges -->
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6);">
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; background: rgba(16,185,129,0.1); color: var(--accent-color); border: 1px solid rgba(16,185,129,0.2);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% Client-Side Processing
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; background: rgba(16,185,129,0.1); color: var(--accent-color); border: 1px solid rgba(16,185,129,0.2);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Your YAML Data Never Leaves Your Browser
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; background: rgba(16,185,129,0.1); color: var(--accent-color); border: 1px solid rgba(16,185,129,0.2);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+        No Signup Required
+      </span>
+    </div>
+
+    <!-- Tool Container -->
+    <div class="tool-container">
+      <!-- Drag & Drop / Upload Area -->
+      <div id="drop-zone" class="drop-zone" style="margin-bottom: var(--space-4); border: 2px dashed var(--border-color); border-radius: var(--radius-md); padding: var(--space-4); text-align: center; cursor: pointer; transition: all 0.2s ease;">
+        <input type="file" id="yaml-file-input" accept=".yaml,.yml,.txt" style="display: none;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+          <span style="font-size: 0.9rem; font-weight: 500;">Drop YAML file (.yaml, .yml) here, click to browse, or paste (Ctrl+V)</span>
+        </div>
+      </div>
+
+      <!-- YAML Input -->
+      <div class="form-group">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <label for="yaml-input" class="form-label" style="margin-bottom: 0;">YAML Input</label>
+          <label style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; user-select: none;">
+            <input type="checkbox" id="realtime-toggle" style="accent-color: var(--accent-color); cursor: pointer;">
+            Real-time validation
+          </label>
+        </div>
+        <textarea id="yaml-input" class="textarea-control" style="min-height: 240px; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem; tab-size: 2;" placeholder="# Paste or type your YAML here..."></textarea>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="tool-actions-bar">
+        <div style="display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap;">
+          <button id="btn-validate" class="btn btn-primary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><polyline points="20 6 9 17 4 12"/></svg>
+            Validate YAML
+          </button>
+          <button id="btn-format-yaml" class="btn btn-secondary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><line x1="21" x2="3" y1="6" y2="6"/><line x1="15" x2="3" y1="12" y2="12"/><line x1="17" x2="3" y1="18" y2="18"/></svg>
+            Format YAML
+          </button>
+          <button id="btn-convert" class="btn btn-secondary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><path d="M16 3h5v5"/><path d="M8 21H3v-5"/><path d="M21 3 14 10"/><path d="M3 21l7-7"/></svg>
+            Convert to JSON
+          </button>
+          <button id="btn-sample" class="btn btn-secondary btn-sm">Load Sample</button>
+        </div>
+        <div style="display: flex; gap: var(--space-2); flex-wrap: wrap;">
+          <button id="btn-copy-json" class="btn btn-secondary btn-sm" disabled>Copy Converted JSON</button>
+          <button id="btn-download-json" class="btn btn-secondary btn-sm" disabled>Download JSON</button>
+          <button id="btn-clear" class="btn btn-secondary btn-sm">Clear</button>
+        </div>
+      </div>
+
+      <!-- Validation Result -->
+      <div id="validation-result" style="display: none; margin-top: var(--space-4); padding: 16px; border-radius: var(--radius-md); font-size: 0.9rem; line-height: 1.6;"></div>
+
+      <!-- JSON Output -->
+      <div id="json-output-section" style="display: none; margin-top: var(--space-6);">
+        <div class="form-group">
+          <label class="form-label">Converted JSON Output</label>
+          <textarea id="json-output" class="textarea-control" style="min-height: 200px; font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;" readonly></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- AEO & GEO Structured Content -->
+    <section style="margin-top: var(--space-10); margin-bottom: var(--space-10);">
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">What is YAML?</h2>
+      <div class="why-card" style="margin-bottom: var(--space-6);">
+        <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">
+          YAML (YAML Ain't Markup Language) is a human-friendly data serialization standard designed for readability. Unlike JSON, YAML uses indentation-based structure instead of braces and brackets, making it ideal for configuration files. It is widely used in DevOps (Docker Compose, Kubernetes manifests), CI/CD pipelines (GitHub Actions, GitLab CI, CircleCI), infrastructure-as-code (Ansible, Terraform), and application settings (Spring Boot, Ruby on Rails).
+        </p>
+      </div>
+
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">How to Validate & Format YAML Online</h2>
+      <div class="why-card" style="margin-bottom: var(--space-6);">
+        <ol style="padding-left: 20px; color: var(--text-secondary); line-height: 1.8;">
+          <li><strong>Upload or Paste your YAML</strong>: Drag & drop your <code>.yaml</code> or <code>.yml</code> file into the drop zone, or paste your code into the editor.</li>
+          <li><strong>Validate YAML</strong>: Click "Validate YAML" to check for syntax errors, improper indentation, or missing key-value formatting.</li>
+          <li><strong>Format YAML</strong>: Click "Format YAML" to normalize indentation and beautify messy YAML code.</li>
+          <li><strong>Convert to JSON</strong>: Click "Convert to JSON" to transform your YAML file into valid JSON ready to copy or download.</li>
+        </ol>
+      </div>
+
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Features of OneToolBox YAML Validator</h2>
+      <div class="why-grid" style="margin-bottom: var(--space-8);">
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">100% Client-Side Privacy</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">All YAML parsing executes directly inside your browser using JavaScript. Zero bytes are uploaded to remote servers — ever.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">Real-Time Validation</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Enable live validation to get instant feedback as you type. Errors are highlighted in real-time with line numbers and descriptions.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">YAML Formatter</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Beautify and clean up poorly indented YAML files into clean 2-space structured YAML with proper alignment.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">YAML → JSON Conversion</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Instantly convert valid YAML to beautifully formatted JSON. Copy or download the JSON output with a single click.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">File Upload & Drag & Drop</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Drag and drop <code>.yaml</code> or <code>.yml</code> files directly from your computer or paste from clipboard (Ctrl+V).</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">Detailed Error Reporting</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Pinpoints exact error locations with line numbers, column offsets, and clear human-readable descriptions of what went wrong.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">YAML vs JSON Comparison</h2>
+      <div class="why-card" style="margin-bottom: var(--space-8); overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-color);">
+              <th style="text-align: left; padding: 12px 16px; font-weight: 600;">Feature</th>
+              <th style="text-align: left; padding: 12px 16px; font-weight: 600;">YAML</th>
+              <th style="text-align: left; padding: 12px 16px; font-weight: 600;">JSON</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Readability</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">✅ Very human-readable</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">⚡ Compact but verbose</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Comments</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">✅ Supports # comments</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">❌ No native comments</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Syntax</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Indentation-based</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Braces & brackets</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color);">
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Use Case</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Config files, DevOps</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">APIs, data exchange</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Data Types</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Auto-detects types</td>
+              <td style="padding: 10px 16px; color: var(--text-secondary);">Explicit typing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section style="margin-bottom: var(--space-10);">
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Frequently Asked Questions</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question">How do I validate a YAML file?</button>
+          <div class="faq-answer">Upload or drag & drop your .yaml or .yml file into the OneToolBox YAML Validator, or paste your code directly into the editor. Click 'Validate YAML' to instantly parse and check syntax. Any errors will be highlighted with line and column numbers.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">How do I check YAML syntax errors?</button>
+          <div class="faq-answer">Paste your YAML into the validator and click 'Validate YAML' or enable 'Real-time validation'. The parser flags syntax errors such as bad indentation, missing colons, or invalid key-value mappings, indicating the exact line number.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can YAML Validator work with Kubernetes files?</button>
+          <div class="faq-answer">Yes! You can validate Kubernetes manifests, Docker Compose files, Ansible playbooks, GitHub Actions workflows, and any standard YAML file.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Does this YAML validator upload my files?</button>
+          <div class="faq-answer">No. OneToolBox processes everything 100% client-side in your browser using JavaScript. Your YAML files and data never leave your device — zero bytes are sent to any server.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">What is YAML used for?</button>
+          <div class="faq-answer">YAML (YAML Ain't Markup Language) is a human-readable data serialization standard commonly used for configuration files in DevOps (Docker Compose, Kubernetes, Ansible), CI/CD pipelines (GitHub Actions, GitLab CI, CircleCI), infrastructure-as-code tools (Terraform, CloudFormation), and application settings (Spring Boot, Ruby on Rails).</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">Can I convert YAML to JSON?</button>
+          <div class="faq-answer">Yes. After validating your YAML, click 'Convert to JSON' to generate equivalent JSON output. You can copy the converted JSON to your clipboard or download it as a .json file.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section>
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Related Tools</h2>
+      <div class="why-grid" style="margin-bottom: var(--space-8);">
+        <a href="/tools/json-formatter.html" class="why-card" style="text-decoration: none; color: inherit; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+          <h4 style="font-weight: 600; margin-bottom: 4px; color: var(--accent-color);">JSON Formatter</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Beautify, format, and validate JSON with custom indentation.</p>
+        </a>
+        <a href="/tools/json-viewer.html" class="why-card" style="text-decoration: none; color: inherit; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+          <h4 style="font-weight: 600; margin-bottom: 4px; color: var(--accent-color);">JSON Viewer</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Interactive tree view inspector for complex nested JSON structures.</p>
+        </a>
+        <a href="/tools/base64-encoder.html" class="why-card" style="text-decoration: none; color: inherit; transition: transform 0.15s ease, box-shadow 0.15s ease;">
+          <h4 style="font-weight: 600; margin-bottom: 4px; color: var(--accent-color);">Base64 Encoder</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Convert text to standard or URL-safe Base64 strings.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Search Modal -->
+  <div id="search-modal-backdrop" class="search-modal-backdrop">
+    <div class="search-modal">
+      <div class="search-input-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-modal-input" placeholder="Type a tool name or keyword..." autocomplete="off">
+        <kbd>ESC</kbd>
+      </div>
+      <ul id="search-results-list" class="search-results-list"></ul>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <span>&copy; 2026 OneToolBox. All rights reserved.</span>
+        <a href="/" class="section-link">&larr; Back to Homepage</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- js-yaml library (CDN) for client-side YAML parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/tools-manager.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const yamlInput = document.getElementById('yaml-input');
+      const jsonOutput = document.getElementById('json-output');
+      const jsonSection = document.getElementById('json-output-section');
+      const resultDiv = document.getElementById('validation-result');
+      const validateBtn = document.getElementById('btn-validate');
+      const formatYamlBtn = document.getElementById('btn-format-yaml');
+      const convertBtn = document.getElementById('btn-convert');
+      const sampleBtn = document.getElementById('btn-sample');
+      const copyBtn = document.getElementById('btn-copy-json');
+      const downloadBtn = document.getElementById('btn-download-json');
+      const clearBtn = document.getElementById('btn-clear');
+      const realtimeToggle = document.getElementById('realtime-toggle');
+      const dropZone = document.getElementById('drop-zone');
+      const yamlFileInput = document.getElementById('yaml-file-input');
+
+      const SAMPLE_YAML = `version: "3.8"
+
+services:
+  app:
+    image: node:20
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: postgres://localhost/app
+
+  database:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password`;
+
+      function showResult(type, message) {
+        resultDiv.style.display = 'block';
+        if (type === 'success') {
+          resultDiv.style.background = 'rgba(16, 185, 129, 0.1)';
+          resultDiv.style.border = '1px solid rgba(16, 185, 129, 0.3)';
+          resultDiv.style.color = '#10b981';
+          resultDiv.innerHTML = `<div style="display: flex; align-items: flex-start; gap: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div><strong>Valid YAML!</strong> Your YAML syntax is correct and can be parsed successfully.</div></div>`;
+        } else {
+          resultDiv.style.background = 'rgba(239, 68, 68, 0.1)';
+          resultDiv.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+          resultDiv.style.color = '#ef4444';
+          resultDiv.innerHTML = `<div style="display: flex; align-items: flex-start; gap: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 2px;"><circle cx="12" cy="12" r="10"/><line x1="15" x2="9" y1="9" y2="15"/><line x1="9" x2="15" y1="9" y2="15"/></svg><div>${message}</div></div>`;
+        }
+      }
+
+      function validateYAML() {
+        const raw = yamlInput.value.trim();
+        if (!raw) {
+          resultDiv.style.display = 'none';
+          jsonSection.style.display = 'none';
+          return false;
+        }
+        try {
+          jsyaml.load(raw);
+          showResult('success');
+          return true;
+        } catch (e) {
+          let msg = '<strong>Invalid YAML Syntax</strong><br>';
+          if (e.mark) {
+            msg += `<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">Line ${e.mark.line + 1}, Column ${e.mark.column + 1}</span><br>`;
+          }
+          msg += `<span style="opacity: 0.9;">${escapeHtml(e.reason || e.message)}</span>`;
+          showResult('error', msg);
+          return false;
+        }
+      }
+
+      function formatYAML() {
+        const raw = yamlInput.value.trim();
+        if (!raw) return;
+        try {
+          const parsed = jsyaml.load(raw);
+          const formatted = jsyaml.dump(parsed, { indent: 2, lineWidth: -1 });
+          yamlInput.value = formatted;
+          showResult('success');
+          OneToolBox.toast('YAML Formatted!');
+        } catch (e) {
+          let msg = '<strong>Cannot format — invalid YAML syntax</strong><br>';
+          if (e.mark) {
+            msg += `<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">Line ${e.mark.line + 1}, Column ${e.mark.column + 1}</span><br>`;
+          }
+          msg += `<span style="opacity: 0.9;">${escapeHtml(e.reason || e.message)}</span>`;
+          showResult('error', msg);
+        }
+      }
+
+      function convertToJSON() {
+        const raw = yamlInput.value.trim();
+        if (!raw) return;
+        try {
+          const parsed = jsyaml.load(raw);
+          const json = JSON.stringify(parsed, null, 2);
+          jsonOutput.value = json;
+          jsonSection.style.display = 'block';
+          copyBtn.disabled = false;
+          downloadBtn.disabled = false;
+          showResult('success');
+          OneToolBox.toast('Converted to JSON!');
+        } catch (e) {
+          let msg = '<strong>Cannot convert — invalid YAML</strong><br>';
+          if (e.mark) {
+            msg += `<span style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;">Line ${e.mark.line + 1}, Column ${e.mark.column + 1}</span><br>`;
+          }
+          msg += `<span style="opacity: 0.9;">${escapeHtml(e.reason || e.message)}</span>`;
+          showResult('error', msg);
+          jsonSection.style.display = 'none';
+          copyBtn.disabled = true;
+          downloadBtn.disabled = true;
+        }
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      function handleFileSelect(file) {
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          yamlInput.value = e.target.result;
+          validateYAML();
+          OneToolBox.toast(`File "${file.name}" loaded!`);
+        };
+        reader.readAsText(file);
+      }
+
+      // File upload & Drag & Drop listeners
+      dropZone.addEventListener('click', () => yamlFileInput.click());
+      yamlFileInput.addEventListener('change', (e) => handleFileSelect(e.target.files[0]));
+
+      ['dragenter', 'dragover'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          dropZone.style.borderColor = 'var(--accent-color)';
+          dropZone.style.background = 'rgba(16, 185, 129, 0.05)';
+        });
+      });
+
+      ['dragleave', 'drop'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          dropZone.style.borderColor = 'var(--border-color)';
+          dropZone.style.background = 'transparent';
+        });
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        const file = e.dataTransfer.files[0];
+        if (file) handleFileSelect(file);
+      });
+
+      // Ctrl+V Paste anywhere on page for text/yaml
+      document.addEventListener('paste', (e) => {
+        if (document.activeElement === yamlInput) return;
+        const text = e.clipboardData.getData('text');
+        if (text && (text.includes(':') || text.includes('-'))) {
+          yamlInput.value = text;
+          validateYAML();
+          OneToolBox.toast('YAML pasted from clipboard!');
+        }
+      });
+
+      // Event Listeners
+      validateBtn.addEventListener('click', validateYAML);
+      formatYamlBtn.addEventListener('click', formatYAML);
+      convertBtn.addEventListener('click', convertToJSON);
+
+      sampleBtn.addEventListener('click', () => {
+        yamlInput.value = SAMPLE_YAML;
+        resultDiv.style.display = 'none';
+        jsonSection.style.display = 'none';
+        copyBtn.disabled = true;
+        downloadBtn.disabled = true;
+        OneToolBox.toast('Sample DevOps YAML loaded!');
+      });
+
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(jsonOutput.value);
+        OneToolBox.toast('Converted JSON copied to clipboard!');
+      });
+
+      downloadBtn.addEventListener('click', () => {
+        const blob = new Blob([jsonOutput.value], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'converted.json';
+        a.click();
+        URL.revokeObjectURL(url);
+        OneToolBox.toast('JSON file downloaded!');
+      });
+
+      clearBtn.addEventListener('click', () => {
+        yamlInput.value = '';
+        jsonOutput.value = '';
+        jsonSection.style.display = 'none';
+        resultDiv.style.display = 'none';
+        copyBtn.disabled = true;
+        downloadBtn.disabled = true;
+      });
+
+      // Real-time validation (debounced)
+      let debounceTimer;
+      yamlInput.addEventListener('input', () => {
+        if (!realtimeToggle.checked) return;
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          validateYAML();
+        }, 300);
+      });
+
+      // Tab key support in textarea
+      yamlInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          const start = yamlInput.selectionStart;
+          const end = yamlInput.selectionEnd;
+          yamlInput.value = yamlInput.value.substring(0, start) + '  ' + yamlInput.value.substring(end);
+          yamlInput.selectionStart = yamlInput.selectionEnd = start + 2;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

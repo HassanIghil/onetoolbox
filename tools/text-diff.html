@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script>
+    (function() {
+      var t = localStorage.getItem('onetoolbox_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+      if (t === 'dark') {
+        document.documentElement.style.backgroundColor = '#0b0f17';
+        document.documentElement.style.color = '#f3f4f6';
+      } else {
+        document.documentElement.style.backgroundColor = '#ffffff';
+        document.documentElement.style.color = '#111827';
+      }
+    })();
+  </script>
+  <style>
+    html[data-theme="dark"] { background-color: #0b0f17 !important; color: #f3f4f6 !important; }
+    html[data-theme="light"] { background-color: #ffffff !important; color: #111827 !important; }
+    #page-preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 200ms ease, visibility 200ms ease;
+    }
+    html[data-theme="dark"] #page-preloader { background-color: #0b0f17; }
+    html[data-theme="light"] #page-preloader { background-color: #ffffff; }
+    #page-preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid rgba(16, 185, 129, 0.2);
+      border-top-color: #10b981;
+      border-radius: 50%;
+      animation: preloader-spin 0.5s linear infinite;
+    }
+    @keyframes preloader-spin { to { transform: rotate(360deg); } }
+    .diff-view {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background-color: var(--bg-surface);
+      overflow-x: auto;
+    }
+    .diff-line {
+      display: flex;
+      padding: 2px 8px;
+    }
+    .diff-line-num {
+      width: 40px;
+      color: var(--text-muted);
+      user-select: none;
+      text-align: right;
+      padding-right: 10px;
+    }
+    .diff-line-content {
+      flex: 1;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    .diff-added {
+      background-color: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+    }
+    .diff-removed {
+      background-color: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+    .diff-unchanged {
+      color: var(--text-primary);
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <title>Text Diff &amp; Code Comparator Online — Compare Text Side-by-Side | OneToolBox</title>
+  <meta name="description" content="Free online text diff tool and code comparator. Compare two text or code files side-by-side to highlight additions, deletions, and modifications instantly. 100% private.">
+  <meta name="keywords" content="text diff tool, code comparator, compare text online, diff checker, side by side text compare, text comparison tool, line diff online">
+  <link rel="canonical" href="https://onetoolbox.dev/tools/text-diff">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Open Graph Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onetoolbox.dev/tools/text-diff">
+  <meta property="og:title" content="Text Diff & Code Comparator Online — Compare Text Side-by-Side | OneToolBox">
+  <meta property="og:description" content="Free online text diff tool and code comparator. Compare two text or code files side-by-side to highlight additions, deletions, and modifications instantly. 100% private.">
+  <meta property="og:site_name" content="OneToolBox">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://onetoolbox.dev/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://onetoolbox.dev/tools/text-diff">
+  <meta name="twitter:title" content="Text Diff & Code Comparator Online — Compare Text Side-by-Side | OneToolBox">
+  <meta name="twitter:description" content="Free online text diff tool and code comparator. Compare two text or code files side-by-side to highlight additions, deletions, and modifications instantly. 100% private.">
+  <meta name="twitter:image" content="https://onetoolbox.dev/og-image.png">
+
+  <!-- Preconnect & Non-blocking Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"></noscript>
+  <link rel="stylesheet" href="/assets/css/main.min.css">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "name": "Text Diff & Code Comparator",
+        "url": "https://onetoolbox.dev/tools/text-diff",
+        "description": "Free online text diff tool and code comparator. Compare text side-by-side to highlight additions and deletions in your browser.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "OneToolBox",
+          "url": "https://onetoolbox.dev",
+          "logo": "https://onetoolbox.dev/apple-touch-icon.png"
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Text Diff Tool",
+        "url": "https://onetoolbox.dev/tools/text-diff",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "All",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://onetoolbox.dev/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Developer Tools",
+            "item": "https://onetoolbox.dev/categories/developer-tools.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Text Diff Tool",
+            "item": "https://onetoolbox.dev/tools/text-diff"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does this Text Diff tool work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool uses Myers longest common subsequence (LCS) diff algorithm directly inside your browser to compare two text passages line by line, highlighting added, deleted, and modified lines."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my text data uploaded to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. The entire comparison process executes 100% client-side in your browser. Zero bytes leave your device."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Page Preloader -->
+  <div id="page-preloader" aria-hidden="true">
+    <div class="preloader-spinner"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="brand-logo">
+          <img src="/apple-touch-icon.png" alt="OneToolBox Logo" class="brand-img-logo" width="28" height="28">
+          <span>OneToolBox</span>
+        </a>
+
+        <button class="header-search-btn trigger-search" aria-label="Search tools">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span>Search tools...</span>
+          <kbd>Ctrl K</kbd>
+        </button>
+
+        <nav>
+          <ul class="nav-links">
+            <li><a href="/categories/index.html" class="nav-link">Categories</a></li>
+            <li><a href="/about.html" class="nav-link">About</a></li>
+            <li><a href="/contact.html" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark mode"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+          <button id="mobile-menu-btn" class="icon-btn mobile-menu-btn" aria-label="Toggle navigation menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Nav -->
+  <div id="mobile-nav" class="mobile-nav">
+    <ul class="mobile-nav-list">
+      <li><a href="/categories/index.html" class="mobile-nav-link">Categories</a></li>
+      <li><a href="/about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="/contact.html" class="mobile-nav-link">Contact</a></li>
+      <li><a href="/privacy.html" class="mobile-nav-link">Privacy Policy</a></li>
+      <li><a href="/terms.html" class="mobile-nav-link">Terms of Service</a></li>
+    </ul>
+  </div>
+
+  <main class="main-content container">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/categories/developer-tools.html">Developer Tools</a> &rsaquo; <span>Text Diff</span>
+    </div>
+
+    <div class="tool-header-wrapper">
+      <div style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-2);">
+        <span class="badge badge-primary">Developer Tools</span>
+        <span class="badge badge-muted">Comparator</span>
+      </div>
+      <h1 class="page-title">Text Diff &amp; Code Comparator</h1>
+      <p class="page-subtitle">Compare two text files or code snippets side-by-side. Highlight additions, deletions, and line changes 100% client-side.</p>
+    </div>
+
+    <!-- Trust Badges -->
+    <div style="display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6);">
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; background: rgba(16,185,129,0.1); color: var(--accent-color); border: 1px solid rgba(16,185,129,0.2);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        100% Client-Side Processing
+      </span>
+      <span style="display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-size: 0.8rem; font-weight: 500; background: rgba(16,185,129,0.1); color: var(--accent-color); border: 1px solid rgba(16,185,129,0.2);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Your Data Never Leaves Your Browser
+      </span>
+    </div>
+
+    <!-- Tool Container -->
+    <div class="tool-container">
+      <div class="tool-grid-2col" style="margin-bottom: var(--space-4);">
+        <div class="form-group">
+          <label for="text-original" class="form-label">Original Text (Old Version)</label>
+          <textarea id="text-original" class="textarea-control" style="min-height: 200px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;" placeholder="Paste original text here..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="text-changed" class="form-label">Changed Text (New Version)</label>
+          <textarea id="text-changed" class="textarea-control" style="min-height: 200px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;" placeholder="Paste modified text here..."></textarea>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="tool-actions-bar">
+        <div style="display: flex; gap: var(--space-2); align-items: center; flex-wrap: wrap;">
+          <button id="btn-compare" class="btn btn-primary btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 4px;"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>
+            Compare Texts
+          </button>
+          <button id="btn-swap" class="btn btn-secondary btn-sm">Swap Texts</button>
+          <button id="btn-sample" class="btn btn-secondary btn-sm">Load Sample</button>
+        </div>
+        <div>
+          <button id="btn-clear" class="btn btn-secondary btn-sm">Clear</button>
+        </div>
+      </div>
+
+      <!-- Diff Output -->
+      <div id="diff-output-section" style="display: none; margin-top: var(--space-6);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <div class="form-label" style="margin-bottom: 0;">Diff Results</div>
+          <div style="display: flex; gap: 12px; font-size: 0.8rem; font-weight: 600;">
+            <span style="color: #10b981;">+ <span id="count-added">0</span> Added</span>
+            <span style="color: #ef4444;">- <span id="count-removed">0</span> Removed</span>
+          </div>
+        </div>
+        <div id="diff-container" class="diff-view"></div>
+      </div>
+    </div>
+
+    <!-- SEO Content -->
+    <section style="margin-top: var(--space-10); margin-bottom: var(--space-10);">
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">What is a Text Diff &amp; Code Comparator?</h2>
+      <div class="why-card" style="margin-bottom: var(--space-6);">
+        <p style="color: var(--text-secondary); line-height: 1.7; font-size: 1rem;">
+          A Text Diff tool compares two text blocks or source code files line by line to highlight differences. It identifies added lines, deleted content, and altered code structure. This is essential for code reviews, version auditing, configuration comparison, and document editing.
+        </p>
+      </div>
+
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Key Features</h2>
+      <div class="why-grid" style="margin-bottom: var(--space-8);">
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">100% Private</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Runs entirely inside your browser. Confidential code stays on your device.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">Line-by-Line Highlight</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Color-coded green (additions) and red (deletions) for instant visual comparison.</p>
+        </div>
+        <div class="why-card">
+          <h4 style="font-weight: 600; margin-bottom: 4px;">Zero Latency</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Instant computation powered by pure JavaScript diff algorithms.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="margin-bottom: var(--space-10);">
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question">How does this Text Diff tool work?</button>
+          <div class="faq-answer">The tool compares two text passages line by line directly in your browser, highlighting added, deleted, and modified lines using a fast client-side diff algorithm.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">Is my text data uploaded to a server?</button>
+          <div class="faq-answer">No. The entire comparison process executes 100% client-side in your browser. Zero bytes leave your device.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section>
+      <h2 class="section-title" style="margin-bottom: var(--space-4);">Related Tools</h2>
+      <div class="why-grid" style="margin-bottom: var(--space-8);">
+        <a href="/tools/json-formatter.html" class="why-card" style="text-decoration: none; color: inherit;">
+          <h4 style="font-weight: 600; margin-bottom: 4px; color: var(--accent-color);">JSON Formatter</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Beautify and format JSON code.</p>
+        </a>
+        <a href="/tools/yaml-validator.html" class="why-card" style="text-decoration: none; color: inherit;">
+          <h4 style="font-weight: 600; margin-bottom: 4px; color: var(--accent-color);">YAML Validator</h4>
+          <p style="font-size: 0.875rem; color: var(--text-muted);">Validate and format YAML files.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <span>&copy; 2026 OneToolBox. All rights reserved.</span>
+        <a href="/" class="section-link">&larr; Back to Homepage</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.min.js"></script>
+  <script src="/assets/js/tools-manager.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const origInput = document.getElementById('text-original');
+      const changedInput = document.getElementById('text-changed');
+      const diffContainer = document.getElementById('diff-container');
+      const diffSection = document.getElementById('diff-output-section');
+      const countAdded = document.getElementById('count-added');
+      const countRemoved = document.getElementById('count-removed');
+
+      const btnCompare = document.getElementById('btn-compare');
+      const btnSwap = document.getElementById('btn-swap');
+      const btnSample = document.getElementById('btn-sample');
+      const btnClear = document.getElementById('btn-clear');
+
+      const SAMPLE_ORIG = `function calculateTotal(price, tax) {
+  var total = price + (price * tax);
+  console.log("Total is: " + total);
+  return total;
+}`;
+
+      const SAMPLE_CHANGED = `function calculateTotal(price, tax, discount = 0) {
+  const subtotal = price - discount;
+  const total = subtotal + (subtotal * tax);
+  console.log(\`Final total: \${total}\`);
+  return total;
+}`;
+
+      // Simple line diff algorithm (LCS)
+      function computeLineDiff(text1, text2) {
+        const lines1 = text1.split('\n');
+        const lines2 = text2.split('\n');
+        const N = lines1.length;
+        const M = lines2.length;
+
+        // DP matrix
+        const L = Array.from({ length: N + 1 }, () => new Array(M + 1).fill(0));
+        for (let i = 0; i < N; i++) {
+          for (let j = 0; j < M; j++) {
+            if (lines1[i] === lines2[j]) {
+              L[i + 1][j + 1] = L[i][j] + 1;
+            } else {
+              L[i + 1][j + 1] = Math.max(L[i + 1][j], L[i][j + 1]);
+            }
+          }
+        }
+
+        // Backtrack
+        let i = N, j = M;
+        const result = [];
+        while (i > 0 || j > 0) {
+          if (i > 0 && j > 0 && lines1[i - 1] === lines2[j - 1]) {
+            result.unshift({ type: 'unchanged', text: lines1[i - 1] });
+            i--; j--;
+          } else if (j > 0 && (i === 0 || L[i][j - 1] >= L[i - 1][j])) {
+            result.unshift({ type: 'added', text: lines2[j - 1] });
+            j--;
+          } else if (i > 0 && (j === 0 || L[i][j - 1] < L[i - 1][j])) {
+            result.unshift({ type: 'removed', text: lines1[i - 1] });
+            i--;
+          }
+        }
+        return result;
+      }
+
+      function compareTexts() {
+        const orig = origInput.value;
+        const changed = changedInput.value;
+
+        if (!orig.trim() && !changed.trim()) {
+          OneToolBox.toast('Please enter text to compare', 'danger');
+          return;
+        }
+
+        const diffs = computeLineDiff(orig, changed);
+        let added = 0, removed = 0;
+
+        let html = '';
+        let lineNum = 1;
+        diffs.forEach(d => {
+          if (d.type === 'added') added++;
+          if (d.type === 'removed') removed++;
+
+          const typeClass = d.type === 'added' ? 'diff-added' : (d.type === 'removed' ? 'diff-removed' : 'diff-unchanged');
+          const prefix = d.type === 'added' ? '+' : (d.type === 'removed' ? '-' : ' ');
+
+          html += `<div class="diff-line ${typeClass}">
+            <div class="diff-line-num">${lineNum++}</div>
+            <div class="diff-line-content">${prefix} ${escapeHtml(d.text)}</div>
+          </div>`;
+        });
+
+        diffContainer.innerHTML = html;
+        countAdded.textContent = added;
+        countRemoved.textContent = removed;
+        diffSection.style.display = 'block';
+        OneToolBox.toast('Text comparison complete!');
+      }
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      btnCompare.addEventListener('click', compareTexts);
+
+      btnSwap.addEventListener('click', () => {
+        const temp = origInput.value;
+        origInput.value = changedInput.value;
+        changedInput.value = temp;
+        if (diffSection.style.display !== 'none') compareTexts();
+      });
+
+      btnSample.addEventListener('click', () => {
+        origInput.value = SAMPLE_ORIG;
+        changedInput.value = SAMPLE_CHANGED;
+        compareTexts();
+      });
+
+      btnClear.addEventListener('click', () => {
+        origInput.value = '';
+        changedInput.value = '';
+        diffSection.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
