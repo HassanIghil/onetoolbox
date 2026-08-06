@@ -3,7 +3,7 @@
 .antigravityignore
 .vscode/
 .idea/
-.onetoolbox-dev/
+.onetoolbox.dev-audit
 # Dependencies & Build output
 node_modules/
 dist/
