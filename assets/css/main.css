@@ -1049,3 +1049,12 @@ kbd {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.brand-img-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  object-fit: contain;
+  display: inline-block;
+  vertical-align: middle;
+}
