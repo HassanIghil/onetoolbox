@@ -33,7 +33,22 @@
     }
   }
 
+  function hidePreloader() {
+    const loader = document.getElementById('page-preloader');
+    if (loader) {
+      loader.classList.add('loaded');
+    }
+  }
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    hidePreloader();
+  } else {
+    document.addEventListener('DOMContentLoaded', hidePreloader);
+    window.addEventListener('load', hidePreloader);
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
+    hidePreloader();
     const currentTheme = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
     updateThemeIcon(currentTheme);
     

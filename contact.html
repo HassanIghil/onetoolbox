@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <script>
     (function() {
       var t = localStorage.getItem('onetoolbox_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', t);
+      if (t === 'dark') {
+        document.documentElement.style.backgroundColor = '#0b0f17';
+        document.documentElement.style.color = '#f3f4f6';
+      } else {
+        document.documentElement.style.backgroundColor = '#ffffff';
+        document.documentElement.style.color = '#111827';
+      }
     })();
   </script>
+  <style>
+    html[data-theme="dark"], html[data-theme="dark"] body { background-color: #0b0f17 !important; color: #f3f4f6 !important; }
+    html[data-theme="light"], html[data-theme="light"] body { background-color: #ffffff !important; color: #111827 !important; }
+    #page-preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 250ms ease, visibility 250ms ease;
+    }
+    html[data-theme="dark"] #page-preloader { background-color: #0b0f17; }
+    html[data-theme="light"] #page-preloader { background-color: #ffffff; }
+    #page-preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+    .preloader-spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid rgba(37, 99, 235, 0.2);
+      border-top-color: #2563eb;
+      border-radius: 50%;
+      animation: preloader-spin 0.5s linear infinite;
+    }
+    @keyframes preloader-spin { to { transform: rotate(360deg); } }
+  </style>
+  
+  
+  <meta charset="UTF-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Preconnect & Non-blocking Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,6 +84,10 @@
 
 </head>
 <body>
+  <!-- Page Preloader -->
+  <div id="page-preloader" aria-hidden="true">
+    <div class="preloader-spinner"></div>
+  </div>
 
   <!-- Site Header -->
   <header class="site-header">
