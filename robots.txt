@@ -29,6 +29,11 @@
 User-agent: *
 Content-Signal: search=yes,ai-train=no,use=reference
 Allow: /
+Allow: /favicon*
+Allow: /apple-touch-icon.png
+Allow: /android-chrome*
+Allow: /site.webmanifest
+Allow: /llms.txt
 
 User-agent: Amazonbot
 Disallow: /
@@ -58,14 +63,6 @@ User-agent: meta-externalagent
 Disallow: /
 
 # END Cloudflare Managed Content
-
-User-agent: *
-Allow: /
-Allow: /favicon*
-Allow: /apple-touch-icon.png
-Allow: /android-chrome*
-Allow: /site.webmanifest
-Allow: /llms.txt
 
 User-agent: Googlebot
 Allow: /
