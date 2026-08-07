@@ -42,3 +42,8 @@ Thumbs.db
 
 # Playwright CLI temp
 .playwright-cli/
+
+
+#files
+urls.txt
+indexnow_payload.json

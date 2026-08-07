@@ -11,39 +11,39 @@
 ## Tool Directory by Category
 
 ### Developer Tools
-- JSON Viewer (/tools/json-viewer.html): Interactive collapsible tree view inspector and syntax highlighter for complex nested JSON.
-- JSON Formatter (/tools/json-formatter.html): Beautify, format, validate, and minify JSON with custom 2-space, 4-space, or tab indentation.
-- UUID Generator (/tools/uuid-generator.html): Generate cryptographically secure Version 4 UUIDs (GUIDs) in bulk.
-- HTML Encoder (/tools/html-encoder.html): Convert special characters (&, <, >) to HTML entities and unescape markup safely.
-- CSS Minifier (/tools/css-minifier.html): Compress stylesheet payload sizes by stripping comments and whitespace.
-- JS Minifier (/tools/js-minifier.html): Compress JavaScript code payload sizes for production deployment.
-- YAML Validator (/tools/yaml-validator.html): Validate, parse, and convert YAML to JSON with real-time error reporting and line-level error diagnostics.
-- SVG Optimizer (/tools/svg-optimizer.html): Clean, compress, and minify SVG vector code by removing metadata, comments, and whitespace.
-- Hash Generator (/tools/hash-generator.html): Compute MD5, SHA-1, SHA-256, SHA-384, and SHA-512 cryptographic hashes for text and files via Web Cryptography API.
-- Text Diff (/tools/text-diff.html): Compare two text files or code snippets side-by-side to highlight additions, deletions, and modifications line by line.
-- Color Converter (/tools/color-converter.html): Convert HEX, RGB, HSL, HSV, and CMYK color codes with color picker, contrast check, and palette generator.
+- JSON Viewer (/tools/json-viewer): Interactive collapsible tree view inspector and syntax highlighter for complex nested JSON.
+- JSON Formatter (/tools/json-formatter): Beautify, format, validate, and minify JSON with custom 2-space, 4-space, or tab indentation.
+- UUID Generator (/tools/uuid-generator): Generate cryptographically secure Version 4 UUIDs (GUIDs) in bulk.
+- HTML Encoder (/tools/html-encoder): Convert special characters (&, <, >) to HTML entities and unescape markup safely.
+- CSS Minifier (/tools/css-minifier): Compress stylesheet payload sizes by stripping comments and whitespace.
+- JS Minifier (/tools/js-minifier): Compress JavaScript code payload sizes for production deployment.
+- YAML Validator (/tools/yaml-validator): Validate, parse, and convert YAML to JSON with real-time error reporting and line-level error diagnostics.
+- SVG Optimizer (/tools/svg-optimizer): Clean, compress, and minify SVG vector code by removing metadata, comments, and whitespace.
+- Hash Generator (/tools/hash-generator): Compute MD5, SHA-1, SHA-256, SHA-384, and SHA-512 cryptographic hashes for text and files via Web Cryptography API.
+- Text Diff (/tools/text-diff): Compare two text files or code snippets side-by-side to highlight additions, deletions, and modifications line by line.
+- Color Converter (/tools/color-converter): Convert HEX, RGB, HSL, HSV, and CMYK color codes with color picker, contrast check, and palette generator.
 
 ### Image Tools
-- Image Compressor (/tools/image-compressor.html): 100% private browser HTML5 Canvas image optimization for PNG, JPG, and WebP.
-- WebP Converter (/tools/webp-converter.html): Convert PNG and JPG photos to next-gen Google WebP image format.
-- PNG to JPG (/tools/png-to-jpg.html): Convert transparent PNG graphics to JPG standard format with custom background fill colors.
-- JPG to PNG (/tools/jpg-to-png.html): Convert lossy JPEG photos to lossless PNG graphics.
-- Favicon Generator (/tools/favicon-generator.html): Convert any logo or picture into multi-size favicons (16x16, 32x32, Apple Touch, PWA app icons).
-- Image Resizer (/tools/image-resizer.html): Resize PNG, JPG, and WebP images by width, height, or percentage client-side.
+- Image Compressor (/tools/image-compressor): 100% private browser HTML5 Canvas image optimization for PNG, JPG, and WebP.
+- WebP Converter (/tools/webp-converter): Convert PNG and JPG photos to next-gen Google WebP image format.
+- PNG to JPG (/tools/png-to-jpg): Convert transparent PNG graphics to JPG standard format with custom background fill colors.
+- JPG to PNG (/tools/jpg-to-png): Convert lossy JPEG photos to lossless PNG graphics.
+- Favicon Generator (/tools/favicon-generator): Convert any logo or picture into multi-size favicons (16x16, 32x32, Apple Touch, PWA app icons).
+- Image Resizer (/tools/image-resizer): Resize PNG, JPG, and WebP images by width, height, or percentage client-side.
 
 ### Text Utilities
-- Markdown Previewer (/tools/markdown-preview.html): Live side-by-side GitHub Flavored Markdown (GFM) editor and HTML converter.
-- Base64 Encoder (/tools/base64-encoder.html): Convert plain text into standard or URL-safe Base64 strings.
-- Base64 Decoder (/tools/base64-decoder.html): Decode Base64 encoded strings back into plain UTF-8 text with auto-validation.
+- Markdown Previewer (/tools/markdown-preview): Live side-by-side GitHub Flavored Markdown (GFM) editor and HTML converter.
+- Base64 Encoder (/tools/base64-encoder): Convert plain text into standard or URL-safe Base64 strings.
+- Base64 Decoder (/tools/base64-decoder): Decode Base64 encoded strings back into plain UTF-8 text with auto-validation.
 
 ### Calculators & Converters
-- Age Calculator (/tools/age-calculator.html): Compute exact age down to minutes, total days lived, and next birthday countdown.
-- Password Generator (/tools/password-generator.html): CSPRNG hardware-random password creator with customizable rules and entropy meter.
-- Timestamp Converter (/tools/timestamp-converter.html): Convert Unix epoch timestamps (seconds/ms) to UTC/local dates and ISO strings.
+- Age Calculator (/tools/age-calculator): Compute exact age down to minutes, total days lived, and next birthday countdown.
+- Password Generator (/tools/password-generator): CSPRNG hardware-random password creator with customizable rules and entropy meter.
+- Timestamp Converter (/tools/timestamp-converter): Convert Unix epoch timestamps (seconds/ms) to UTC/local dates and ISO strings.
 
 ### Social Media Tools
-- YouTube Thumbnail Downloader (/tools/youtube-thumbnail-downloader.html): Extract 4K (1080p), HD (720p), and SD YouTube video cover images.
-- QR Code Generator (/tools/qr-code-generator.html): Generate custom vector & PNG QR codes for website URLs, text, and Wi-Fi.
+- YouTube Thumbnail Downloader (/tools/youtube-thumbnail-downloader): Extract 4K (1080p), HD (720p), and SD YouTube video cover images.
+- QR Code Generator (/tools/qr-code-generator): Generate custom vector & PNG QR codes for website URLs, text, and Wi-Fi.
 
 ## Canonical Domain & Sitemap
 - Primary Website: https://onetoolbox.dev/
